@@ -382,16 +382,8 @@ function Videos() {
   //   })
   // );
 
-  const savedItem = JSON.parse(
-    localStorage.getItem(LOCAL_STORAGE_LATEST_QUERY)
-  );
-  console.log(savedItem);
-
   useEffect(() => {
-    if (!savedItem) {
-      // fetch(
-      //   "https://youtube.googleapis.com/youtube/v3/videos?key=AIzaSyCeQZ_MjmHNlaK67QI5thMNWGhQQHvTK48"
-      // )
+    if (!localStorage.getItem(LOCAL_STORAGE_LATEST_QUERY)) {
       fetch(
         "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=AIzaSyCeQZ_MjmHNlaK67QI5thMNWGhQQHvTK48"
       )
@@ -412,10 +404,9 @@ function Videos() {
           }
         );
     }
-    if (savedItem) {
+    if (localStorage.getItem(LOCAL_STORAGE_LATEST_QUERY)) {
       console.log("RUNNING FROM LOCAL STORAGE INSTEAD OF FETCH");
-      console.log(savedItem);
-      setItems(savedItem);
+      setItems(localStorage.getItem(LOCAL_STORAGE_LATEST_QUERY));
       setIsLoaded(true);
     }
   }, []);
