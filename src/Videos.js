@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Video } from "./Video";
 
 function Videos() {
+  // 1 history of api responses, stores in localstorage; all of them
+  // 2 history of search terms; in same entry as api response;
+  // new search = check if the search term is in localstorage
+  // if it is, serve matching response from localstorage
+  // only if it's not there, proceed further
+  // 3 if it's not in localstorage, it's a new term
+  // running the code part that takes in api call string + search term
+  // that code part also saves both to localstorage right after
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);

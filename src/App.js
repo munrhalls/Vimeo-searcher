@@ -4,7 +4,7 @@ import Videos from "./Videos";
 function App() {
   return (
     <div className="App">
-      <span>Personalization of youtube.</span>
+      <span>Customizable collection of videos.</span>
       <Videos />
     </div>
   );
