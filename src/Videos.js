@@ -10,9 +10,14 @@ function Videos() {
 
   useEffect(() => {
     if (!localStorage.getItem(LOCAL_STORAGE_LATEST_QUERY)) {
-      fetch(
-        "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=AIzaSyCeQZ_MjmHNlaK67QI5thMNWGhQQHvTK48"
-      )
+      // fetch(
+      //   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20contentDetails%2C%20topicDetails&chart=mostPopular&maxResults=1000&key=AIzaSyCeQZ_MjmHNlaK67QI5thMNWGhQQHvTK48"
+      // )
+      fetch("https://api.vimeo.com/videos?query=hot", {
+        headers: new Headers({
+          Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
+        }),
+      })
         .then((res) => res.json())
         .then(
           (result) => {
@@ -57,9 +62,9 @@ function Videos() {
           </li>
         ))} */}
         <>
-          {items.items.map((item, i) => {
+          {items.data.map((item, i) => {
             // console.log(items);
-            return <Video key={item.id} videoId={item.id} />;
+            return <Video key={item.uri} iFrame={item.embed.html} />;
           })}
         </>
       </ul>
