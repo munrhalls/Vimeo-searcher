@@ -1,10 +1,11 @@
+@import './Videos.css';
+@import './Playlists.css';
+@import 'Container.css';
+
 .App {
     background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(14, 14, 14) 35%, rgb(45, 45, 45) 100%);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    color: #fff;
 }
 
 .Title {
@@ -15,6 +16,7 @@
     font-size: 1.5rem;
     color: #fff;
 }
+
 .Search {
     border-radius: 3px;
     max-height: 3rem;

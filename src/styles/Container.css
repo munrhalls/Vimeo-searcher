@@ -1,0 +1,4 @@
+.Container--horiz {
+    display: flex;
+    flex-direction: row;
+}

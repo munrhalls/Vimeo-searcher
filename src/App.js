@@ -1,6 +1,7 @@
 import "./styles//App.css";
 import React, { useEffect, useState } from "react";
 import Videos from "./components/Videos";
+import { Playlists } from "./components/Playlists.js";
 
 function App() {
   // 1 history of api responses, stores in localstorage; all of them
@@ -88,7 +89,15 @@ function App() {
       <button className="Button" onClick={() => setSearch(searchInput)}>
         Search videos
       </button>
-      <Videos error={error} search={search} isLoaded={isLoaded} items={items} />
+      <div className="Container--horiz">
+        <Playlists />
+        <Videos
+          error={error}
+          search={search}
+          isLoaded={isLoaded}
+          items={items}
+        />
+      </div>
     </div>
   );
 }

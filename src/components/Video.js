@@ -11,7 +11,7 @@ export const Video = ({ videoId, iFrame }) => {
     // if 4, 4 to ""
     const valWidthPos = iFrameArr.indexOf(" width=") + 1;
     iFrameArr[valWidthPos] = 640;
-    
+
     const valHeightPos = iFrameArr.indexOf(" height=") + 1;
     iFrameArr[valHeightPos] = 360;
     iFrameHtml = iFrameArr.join("");
@@ -21,7 +21,7 @@ export const Video = ({ videoId, iFrame }) => {
   }
   console.log(iFrameHtml);
   return (
-    <div>
+    <div className="Video">
       {/* <iframe
         // src={"https://www.youtube.com/embed/" + videoId}
         src={"https://player.vimeo.com/video/" + videoId}

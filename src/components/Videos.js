@@ -2,7 +2,7 @@ import { Video } from "./Video";
 
 function Videos({ error, isLoaded, items, search }) {
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div className="Title__subtitle">Error: {error.message}</div>;
   } else if (!isLoaded) {
     return search ? (
       <div className="Title__subtitle">Loading...</div>
@@ -13,7 +13,7 @@ function Videos({ error, isLoaded, items, search }) {
     );
   } else {
     return (
-      <ul>
+      <ul className="Videos">
         {/* {items.map((item) => (
           <li key={item.id}>
             {item.name} {item.price}
