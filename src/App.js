@@ -77,13 +77,16 @@ function App() {
 
   return (
     <div className="App">
-      <span>Customizable collection of videos.</span>
+      <div className="Title">Make your personal Vimeo playlists.</div>
       <input
+        className="Search"
         type="text"
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-      <button onClick={() => setSearch(searchInput)}>Search videos</button>
+      <button className="Button" onClick={() => setSearch(searchInput)}>
+        Search videos
+      </button>
       <Videos error={error} search={search} isLoaded={isLoaded} items={items} />
     </div>
   );

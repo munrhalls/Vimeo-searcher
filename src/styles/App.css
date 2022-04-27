@@ -1,4 +1,32 @@
 .App {
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(6, 6, 92) 35%, rgb(12, 9, 186) 100%);
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(14, 14, 14) 35%, rgb(45, 45, 45) 100%);
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Title {
+    font-size: 2.5rem;
+    color: #fff;
+}
+.Title__subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+}
+.Search {
+    border-radius: 3px;
+    max-height: 3rem;
+    height: 3rem;
+    margin: 1rem;
+}
+
+.Button {
+    font-size: 17px;
+    border: 3px;
+    background-color: #fff;
+    height: 3rem;
+    width: 6rem;
+    margin: 1rem;
 }

@@ -5,9 +5,9 @@ function Videos({ error, isLoaded, items, search }) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
     return search ? (
-      <div>Loading...</div>
+      <div className="Title__subtitle">Loading...</div>
     ) : (
-      <div>
+      <div className="Title__subtitle">
         Type search term and hit the submit button to display videos list!
       </div>
     );
