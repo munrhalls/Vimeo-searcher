@@ -1,6 +1,6 @@
-import "./App.css";
+import "./styles//App.css";
 import React, { useEffect, useState } from "react";
-import Videos from "./Videos";
+import Videos from "./components/Videos";
 
 function App() {
   // 1 history of api responses, stores in localstorage; all of them
