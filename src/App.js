@@ -80,6 +80,7 @@ function App() {
       <div className="Title">Make your personal Vimeo playlists.</div>
       <input
         className="Search"
+        placeholder="Type here..."
         type="text"
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
