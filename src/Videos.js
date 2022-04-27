@@ -13,7 +13,7 @@ function Videos() {
       // fetch(
       //   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20contentDetails%2C%20topicDetails&chart=mostPopular&maxResults=1000&key=AIzaSyCeQZ_MjmHNlaK67QI5thMNWGhQQHvTK48"
       // )
-      fetch("https://api.vimeo.com/videos?query=hot", {
+      fetch("https://api.vimeo.com/videos?&width=480&height=360&query=hot", {
         headers: new Headers({
           Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
         }),
