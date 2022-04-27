@@ -1,9 +1,11 @@
 import React from "react";
 
-export const VideoMenu = () => {
+export const VideoMenu = ({ playlists }) => {
+  const openPlaylistsVault = () => {};
+
   return (
     <div>
-      <button>Add to playlist</button>
+      <button onClick={() => openPlaylistsVault()}>Add to playlist</button>
     </div>
   );
 };

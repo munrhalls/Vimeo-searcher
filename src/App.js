@@ -18,6 +18,7 @@ function App() {
 
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
+  const [playlists, setPlaylists] = useState([]);
   // checking search term in localstorage
   //   [zc, zxc, wqe, asdqw]
   // or [{search: asda}, ]
@@ -90,7 +91,10 @@ function App() {
         Search videos
       </button>
       <div className="Container--horiz">
-        <Playlists setItems={() => setItems} />
+        <Playlists
+          playlists={playlists}
+          setPlaylists={(playlists) => setPlaylists(playlists)}
+        />
         <Videos
           error={error}
           search={search}

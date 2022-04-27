@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const Playlist = ({ playlist }) => {
-
-
+export const Playlist = ({ playlist, setPlaylistItems }) => {
   return (
-    <button className="Button">
+    <button className="Button" onClick={() => setPlaylistItems(playlist.items)}>
       {playlist.name}
     </button>
   );
