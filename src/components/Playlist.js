@@ -1,5 +1,11 @@
 import React from "react";
 
-export const Playlist = () => {
-  return <div>Playlist</div>;
+export const Playlist = ({ playlist }) => {
+
+
+  return (
+    <button className="Button">
+      {playlist.name}
+    </button>
+  );
 };

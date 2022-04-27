@@ -1,4 +1,5 @@
 import React from "react";
+import { VideoMenu } from "./VideoMenu";
 
 export const Video = ({ videoId, iFrame }) => {
   let iFrameHtml;
@@ -31,7 +32,14 @@ export const Video = ({ videoId, iFrame }) => {
         title="video"
       />{" "} */}
 
-      {iFrame ? <div dangerouslySetInnerHTML={{ __html: iFrameHtml }} /> : ""}
+      {iFrame ? (
+        <div>
+          <div dangerouslySetInnerHTML={{ __html: iFrameHtml }} />
+          <VideoMenu />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

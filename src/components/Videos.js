@@ -14,11 +14,6 @@ function Videos({ error, isLoaded, items, search }) {
   } else {
     return (
       <ul className="Videos">
-        {/* {items.map((item) => (
-          <li key={item.id}>
-            {item.name} {item.price}
-          </li>
-        ))} */}
         <>
           {items.data.map((item, i) => {
             // console.log(items);

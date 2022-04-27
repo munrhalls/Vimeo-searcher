@@ -90,7 +90,7 @@ function App() {
         Search videos
       </button>
       <div className="Container--horiz">
-        <Playlists />
+        <Playlists setItems={() => setItems} />
         <Videos
           error={error}
           search={search}
