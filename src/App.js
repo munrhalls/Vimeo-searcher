@@ -12,8 +12,8 @@ function App() {
 
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
-  const [playlists, setPlaylists] = useState([]);
-  const [playlistItems, setPlaylistItems] = useState(undefined);
+  // const [playlists, setPlaylists] = useState([]);
+  // const [playlistItems, setPlaylistItems] = useState(undefined);
 
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
@@ -27,8 +27,8 @@ function App() {
         .then((res) => res.json())
         .then(
           (result) => {
+            console.log("API CALL");
             setIsLoaded(true);
-            console.log("ALERT ANOTHER REQUEST!!!!", result);
             setSearchItems(result);
             let localStorageKey = "LOCAL_STORAGE_" + search;
             localStorage.setItem(localStorageKey, JSON.stringify(result));
@@ -41,12 +41,12 @@ function App() {
     }
     if (search && localStorage.getItem("LOCAL_STORAGE_" + search)) {
       console.log("LOCAL STORAGE");
+      setIsLoaded(true);
       setSearchItems(
         JSON.parse(localStorage.getItem("LOCAL_STORAGE_" + search))
       );
-      setIsLoaded(true);
     }
-  }, [searchItems]);
+  }, [search]);
 
   return (
     <div className="App">
@@ -69,21 +69,16 @@ function App() {
         Search videos
       </button>
       <div className="Container--horiz">
-        <Playlists
+        {/* <Playlists
           playlists={playlists}
           setPlaylists={(playlists) => setPlaylists(playlists)}
           setPlaylistItems={() => setPlaylistItems()}
-        />
-        {isLoaded ? <Loader /> : ""}
+        /> */}
+        {!isLoaded ? <Loader /> : ""}
         {isLoaded && !error ? (
-          <Videos
-            search={search}
-            searchItems={searchItems}
-            playlists={playlists}
-            playlistItems={playlistItems}
-          />
+          <Videos search={search} items={searchItems} />
         ) : (
-          <Loader />
+          ""
         )}
         {isLoaded && error ? <Error /> : ""}
       </div>
