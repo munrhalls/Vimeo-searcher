@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Playlist } from "./Playlist";
 
-export const Playlists = ({ playlists, setPlaylists }) => {
+export const Playlists = ({ playlists, setPlaylists, setPlaylistItems }) => {
   const addPlaylist = () => {
     console.log("add playlist", playlists);
     setPlaylists([
@@ -20,7 +20,13 @@ export const Playlists = ({ playlists, setPlaylists }) => {
       </button>
       {playlists
         ? playlists.map((playlist) => {
-            return <Playlist key={Math.random()} playlist={playlist} />;
+            return (
+              <Playlist
+                key={Math.random()}
+                playlist={playlist}
+                setPlaylistItems={setPlaylistItems}
+              />
+            );
           })
         : ""}
     </div>

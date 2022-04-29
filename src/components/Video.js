@@ -1,7 +1,7 @@
 import React from "react";
 import { VideoMenu } from "./VideoMenu";
 
-export const Video = ({ videoId, iFrame }) => {
+export const Video = ({ videoId, iFrame, playlists }) => {
   let iFrameHtml;
   function handleStrParams(str) {
     const iFrameArr = iFrame.split('"');
@@ -35,7 +35,7 @@ export const Video = ({ videoId, iFrame }) => {
       {iFrame ? (
         <div>
           <div dangerouslySetInnerHTML={{ __html: iFrameHtml }} />
-          <VideoMenu />
+          <VideoMenu playlists={playlists} />
         </div>
       ) : (
         ""
