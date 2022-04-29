@@ -1,18 +1,7 @@
 import React from "react";
 import { Playlist } from "./Playlist";
 
-export const Playlists = ({ playlists, setPlaylists, setPlaylistItems }) => {
-  const addPlaylist = () => {
-    console.log("add playlist", playlists);
-    setPlaylists([
-      ...playlists,
-      {
-        id: playlists.length,
-        name: "Playlist " + playlists.length,
-        items: [],
-      },
-    ]);
-  };
+export const Playlists = ({ playlists, addPlaylist }) => {
   return (
     <div className="Playlists">
       <button className="Button" onClick={() => addPlaylist()}>
@@ -24,7 +13,7 @@ export const Playlists = ({ playlists, setPlaylists, setPlaylistItems }) => {
               <Playlist
                 key={Math.random()}
                 playlist={playlist}
-                setPlaylistItems={setPlaylistItems}
+                addPlaylist={addPlaylist}
               />
             );
           })

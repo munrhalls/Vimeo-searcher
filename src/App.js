@@ -12,8 +12,39 @@ function App() {
 
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
-  // const [playlists, setPlaylists] = useState([]);
+  const [activePlaylist, setActivePlaylist] = useState(undefined);
+  const [playlists, setPlaylists] = useState([]);
   // const [playlistItems, setPlaylistItems] = useState(undefined);
+  let displayAvailables = [
+    "Hello-page",
+    "Loader",
+    "SearchVideos",
+    "PlaylistVideos",
+  ];
+  function whatToDisplayLogic() {
+    if (!isLoaded && !search) {
+      return displayAvailables[0];
+    }
+    if (isLoaded && error) {
+      return <Loader />;
+    }
+    if (isLoaded && !error && !activePlaylist) {
+      return <Videos search={search} items={searchItems} />;
+    }
+    if (isLoaded && !error && activePlaylist) {
+      return "ActivePlaylist";
+    }
+  }
+  const addPlaylist = () => {
+    setPlaylists([
+      ...playlists,
+      {
+        id: playlists.length,
+        name: "Playlist " + playlists.length,
+        items: [],
+      },
+    ]);
+  };
 
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
@@ -69,18 +100,8 @@ function App() {
         Search videos
       </button>
       <div className="Container--horiz">
-        {/* <Playlists
-          playlists={playlists}
-          setPlaylists={(playlists) => setPlaylists(playlists)}
-          setPlaylistItems={() => setPlaylistItems()}
-        /> */}
-        {!isLoaded ? <Loader /> : ""}
-        {isLoaded && !error ? (
-          <Videos search={search} items={searchItems} />
-        ) : (
-          ""
-        )}
-        {isLoaded && error ? <Error /> : ""}
+        <Playlists playlists={playlists} addPlaylist={() => addPlaylist()} />
+        {whatToDisplayLogic()}
       </div>
     </div>
   );
