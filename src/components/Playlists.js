@@ -1,7 +1,7 @@
 import React from "react";
 import { Playlist } from "./Playlist";
 
-export const Playlists = ({ playlists, addPlaylist }) => {
+export const Playlists = ({ playlists, addPlaylist, togglePlaylist }) => {
   return (
     <div className="Playlists">
       <button className="Button" onClick={() => addPlaylist()}>
@@ -13,7 +13,7 @@ export const Playlists = ({ playlists, addPlaylist }) => {
               <Playlist
                 key={Math.random()}
                 playlist={playlist}
-                addPlaylist={addPlaylist}
+                onClick={() => togglePlaylist(playlist)}
               />
             );
           })

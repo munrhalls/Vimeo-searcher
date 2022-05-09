@@ -1,7 +1,7 @@
 import "./styles//App.css";
 import React, { useEffect, useState } from "react";
 import Videos from "./components/Videos";
-import { Playlists } from "./components/Playlists.js";
+import { PlaylistBtn } from "./components/PlaylistBtn.js";
 import { Loader } from "./components/Loader";
 import { Error } from "./components/Error";
 
@@ -29,10 +29,10 @@ function App() {
       return <Loader />;
     }
     if (isLoaded && !error && !activePlaylist) {
-      return <Videos search={search} items={searchItems} />;
+      return <Videos items={searchItems} />;
     }
     if (isLoaded && !error && activePlaylist) {
-      return "ActivePlaylist";
+      return <Videos items={activePlaylist.items} />;
     }
   }
   const addPlaylist = () => {
@@ -78,7 +78,10 @@ function App() {
       );
     }
   }, [search]);
-
+  function togglePlaylist(playlist) {
+    console.log("toggle", playlist);
+    setActivePlaylist(playlist);
+  }
   return (
     <div className="App">
       <div className="Title">Make your personal Vimeo playlists.</div>
@@ -100,7 +103,22 @@ function App() {
         Search videos
       </button>
       <div className="Container--horiz">
-        <Playlists playlists={playlists} addPlaylist={() => addPlaylist()} />
+        <div className="Playlists">
+          <button className="Button" onClick={() => addPlaylist()}>
+            Add new playlist
+          </button>
+          {playlists
+            ? playlists.map((playlist) => {
+                return (
+                  <PlaylistBtn
+                    key={Math.random()}
+                    playlist={playlist}
+                    onClick={() => togglePlaylist(playlist)}
+                  />
+                );
+              })
+            : ""}
+        </div>
         {whatToDisplayLogic()}
       </div>
     </div>
