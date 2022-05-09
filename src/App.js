@@ -29,10 +29,15 @@ function App() {
       return <Loader />;
     }
     if (isLoaded && !error && !activePlaylist) {
-      return <Videos items={searchItems} />;
+      return <Videos playlists={playlists} items={searchItems} />;
     }
     if (isLoaded && !error && activePlaylist) {
-      return <Videos items={activePlaylist.items} />;
+      return (
+        <div>
+          <Videos playlists={playlists} items={activePlaylist.items} />
+          <button onClick={() => exitPlaylist()}>Exit playlist</button>
+        </div>
+      );
     }
   }
   const addPlaylist = () => {
@@ -81,6 +86,9 @@ function App() {
   function togglePlaylist(playlist) {
     console.log("toggle", playlist);
     setActivePlaylist(playlist);
+  }
+  function exitPlaylist() {
+    setActivePlaylist(undefined);
   }
   return (
     <div className="App">

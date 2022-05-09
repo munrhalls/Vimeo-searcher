@@ -1,20 +1,13 @@
 import React, { useState } from "react";
 
 export const VideoMenu = ({ playlists }) => {
-  const [isPlaylistsOpen, setIsPlaylistsOpen] = useState(false);
-
   return (
-    <div>
-      <button onClick={() => setIsPlaylistsOpen(true)}>Add to playlist</button>
-      {isPlaylistsOpen ? (
-        <div>
-          {playlists.map((playlist) => {
-            <div>{playlist.name}</div>;
-          })}
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
+    <>
+      {playlists
+        ? playlists.map((playlist) => {
+            return <div>{playlist.name}</div>;
+          })
+        : "Zero playlists. Add a playlist, then you can add videos to it."}
+    </>
   );
 };

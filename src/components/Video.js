@@ -35,7 +35,8 @@ export const Video = ({ videoId, iFrame, playlists }) => {
       {iFrame ? (
         <div>
           <div dangerouslySetInnerHTML={{ __html: iFrameHtml }} />
-          {/* <VideoMenu playlists={playlists} /> */}
+          <button>Add to playlist</button>
+          <VideoMenu playlists={playlists} />
         </div>
       ) : (
         ""

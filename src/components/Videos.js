@@ -1,13 +1,19 @@
 import { Video } from "./Video";
 
-function Videos({ items }) {
+function Videos({ items, playlists }) {
   return (
     <ul className="Videos">
       {items && items.data
         ? items.data.map((item, i) => {
-            return <Video key={item.uri} iFrame={item.embed.html} />;
+            return (
+              <Video
+                key={item.uri}
+                playlists={playlists}
+                iFrame={item.embed.html}
+              />
+            );
           })
-        : "This playlist is currently empty."}
+        : "This playlist or collection of search results is currently empty."}
     </ul>
   );
 }
