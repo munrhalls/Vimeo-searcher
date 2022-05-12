@@ -8,7 +8,7 @@ import { Error } from "./components/Error";
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [searchItems, setSearchItems] = useState([]);
+  const [searchVideos, setSearchVideos] = useState([]);
 
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
@@ -29,11 +29,17 @@ function App() {
       return <Loader />;
     }
     if (isLoaded && !error && !activePlaylist) {
+      let videos = [];
+      for (const [key, value] of Object.entries(searchVideos.data)) {
+        videos.push(value.embed.html);
+        console.log(videos);
+      }
+
       return (
         <Videos
           setPlaylists={(playlists) => setPlaylists(playlists)}
           playlists={playlists}
-          items={searchItems}
+          videos={Object.values(searchVideos.data)}
         />
       );
     }
@@ -43,7 +49,7 @@ function App() {
           <Videos
             setPlaylists={() => setPlaylists(playlists)}
             playlists={playlists}
-            items={activePlaylist.items}
+            videos={activePlaylist.items}
           />
           <button onClick={() => exitPlaylist()}>Exit playlist</button>
         </div>
@@ -75,7 +81,7 @@ function App() {
           (result) => {
             console.log("API CALL");
             setIsLoaded(true);
-            setSearchItems(result);
+            setSearchVideos(result);
             let localStorageKey = "LOCAL_STORAGE_" + search;
             localStorage.setItem(localStorageKey, JSON.stringify(result));
           },
@@ -88,7 +94,7 @@ function App() {
     if (search && localStorage.getItem("LOCAL_STORAGE_" + search)) {
       console.log("LOCAL STORAGE");
       setIsLoaded(true);
-      setSearchItems(
+      setSearchVideos(
         JSON.parse(localStorage.getItem("LOCAL_STORAGE_" + search))
       );
     }
@@ -127,6 +133,8 @@ function App() {
           </button>
           {playlists
             ? playlists.map((playlist) => {
+                // click equals
+
                 return (
                   <PlaylistBtn
                     key={Math.random()}

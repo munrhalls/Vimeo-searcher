@@ -1,16 +1,16 @@
 import { Video } from "./Video";
 
-function Videos({ items, playlists, setPlaylists}) {
+function Videos({ videos, playlists, setPlaylists }) {
   return (
     <ul className="Videos">
-      {items && items.data
-        ? items.data.map((item, i) => {
+      {videos
+        ? videos.map((video, i) => {
             return (
               <Video
-                key={item.uri}
+                key={video.uri}
                 playlists={playlists}
                 setPlaylists={setPlaylists}
-                iFrame={item.embed.html}
+                iFrame={video.embed.html}
               />
             );
           })
