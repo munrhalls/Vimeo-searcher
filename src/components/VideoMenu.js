@@ -1,28 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 
-export const VideoMenu = ({ iFrameHtml, playlists, setPlaylists }) => {
-  const vid = iFrameHtml;
+export const VideoMenu = ({ video, playlists, setPlaylists }) => {
   function toggleVidInPlaylist(e) {
     let clickedPlist = playlists.filter(
       (playlist) => playlist.id == e.target.id
     )[0];
-    const hasVid = clickedPlist.items.find((item) => item === vid);
+
+    const hasVid = clickedPlist.items.find((item) => item == video);
     hasVid
-      ? (clickedPlist.items = clickedPlist.items.filter((item) => item !== vid))
-      : (clickedPlist.items[clickedPlist.items.length] = vid);
+      ? (clickedPlist.items = clickedPlist.items.filter(
+          (item) => item != video
+        ))
+      : clickedPlist.items.push(video);
 
     setPlaylists(() => {
       return playlists.map((playlist) => {
-        if (playlist === clickedPlist) {
-          console.log(clickedPlist, playlist);
+        if (playlist == clickedPlist) {
+          playlist = clickedPlist;
+          return playlist;
+        } else {
+          return playlist;
         }
-        return playlist;
       });
     });
   }
 
-  // btn knows if its playlist has this vid or not
-  // btn checks if playlist items has iframe
   return (
     <>
       {playlists
@@ -32,7 +34,7 @@ export const VideoMenu = ({ iFrameHtml, playlists, setPlaylists }) => {
                 id={playlist.id}
                 style={{
                   background: `${
-                    playlist.items.find((item) => item === vid)
+                    playlist.items.find((item) => item == video)
                       ? "green"
                       : "silver"
                   }`,

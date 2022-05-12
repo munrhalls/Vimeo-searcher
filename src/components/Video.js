@@ -1,29 +1,27 @@
 import React from "react";
 import { VideoMenu } from "./VideoMenu";
 
-export const Video = ({ iFrame, playlists, setPlaylists }) => {
-  let iFrameHtml;
-  function handleStrParams() {
-    const iFrameArr = iFrame.split('"');
-
-    const valWidthPos = iFrameArr.indexOf(" width=") + 1;
-    iFrameArr[valWidthPos] = 640;
-
-    const valHeightPos = iFrameArr.indexOf(" height=") + 1;
-    iFrameArr[valHeightPos] = 360;
-    iFrameHtml = iFrameArr.join("");
+export const Video = ({ video, playlists, setPlaylists }) => {
+  let vidHtmlAndParams;
+  function handleStrParams(video) {
+    const videoArr = video.split('"');
+    const valWidthPos = videoArr.indexOf(" width=") + 1;
+    videoArr[valWidthPos] = 640;
+    const valHeightPos = videoArr.indexOf(" height=") + 1;
+    videoArr[valHeightPos] = 360;
+    vidHtmlAndParams = videoArr.join("");
   }
-  if (iFrame) {
-    handleStrParams(iFrame);
+  if (video) {
+    handleStrParams(video);
   }
   return (
     <div className="Video">
-      {iFrame ? (
+      {video ? (
         <div>
-          <div dangerouslySetInnerHTML={{ __html: iFrameHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: vidHtmlAndParams }} />
           <button>Add to playlist</button>
           <VideoMenu
-            iFrameHtml={iFrameHtml}
+            video={video}
             playlists={playlists}
             setPlaylists={setPlaylists}
           />

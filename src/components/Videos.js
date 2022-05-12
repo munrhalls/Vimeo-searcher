@@ -7,10 +7,10 @@ function Videos({ videos, playlists, setPlaylists }) {
         ? videos.map((video, i) => {
             return (
               <Video
-                key={video.uri}
+                key={video}
                 playlists={playlists}
                 setPlaylists={setPlaylists}
-                iFrame={video.embed.html}
+                video={video}
               />
             );
           })

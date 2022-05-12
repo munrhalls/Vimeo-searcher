@@ -9,21 +9,14 @@ function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [searchVideos, setSearchVideos] = useState([]);
-
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
   const [activePlaylist, setActivePlaylist] = useState(undefined);
   const [playlists, setPlaylists] = useState([]);
-  // const [playlistItems, setPlaylistItems] = useState(undefined);
-  let displayAvailables = [
-    "Hello-page",
-    "Loader",
-    "SearchVideos",
-    "PlaylistVideos",
-  ];
+
   function whatToDisplayLogic() {
     if (!isLoaded && !search) {
-      return displayAvailables[0];
+      return "Hello-page";
     }
     if (isLoaded && error) {
       return <Loader />;
@@ -32,22 +25,25 @@ function App() {
       let videos = [];
       for (const [key, value] of Object.entries(searchVideos.data)) {
         videos.push(value.embed.html);
-        console.log(videos);
       }
-
       return (
         <Videos
           setPlaylists={(playlists) => setPlaylists(playlists)}
           playlists={playlists}
-          videos={Object.values(searchVideos.data)}
+          videos={videos}
         />
       );
     }
     if (isLoaded && !error && activePlaylist) {
+      let videos = [];
+      for (const [key, value] of Object.entries(activePlaylist.items)) {
+        videos.push(value);
+      }
+
       return (
         <div>
           <Videos
-            setPlaylists={() => setPlaylists(playlists)}
+            setPlaylists={(playlists) => setPlaylists(playlists)}
             playlists={playlists}
             videos={activePlaylist.items}
           />
@@ -56,6 +52,7 @@ function App() {
       );
     }
   }
+
   const addPlaylist = () => {
     setPlaylists([
       ...playlists,
@@ -92,13 +89,13 @@ function App() {
         );
     }
     if (search && localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      console.log("LOCAL STORAGE");
       setIsLoaded(true);
       setSearchVideos(
         JSON.parse(localStorage.getItem("LOCAL_STORAGE_" + search))
       );
     }
   }, [search]);
+
   function togglePlaylist(playlist) {
     console.log("toggle", playlist);
     setActivePlaylist(playlist);
@@ -133,8 +130,6 @@ function App() {
           </button>
           {playlists
             ? playlists.map((playlist) => {
-                // click equals
-
                 return (
                   <PlaylistBtn
                     key={Math.random()}
