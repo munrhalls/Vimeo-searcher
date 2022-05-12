@@ -29,12 +29,22 @@ function App() {
       return <Loader />;
     }
     if (isLoaded && !error && !activePlaylist) {
-      return <Videos playlists={playlists} items={searchItems} />;
+      return (
+        <Videos
+          setPlaylists={(playlists) => setPlaylists(playlists)}
+          playlists={playlists}
+          items={searchItems}
+        />
+      );
     }
     if (isLoaded && !error && activePlaylist) {
       return (
         <div>
-          <Videos playlists={playlists} items={activePlaylist.items} />
+          <Videos
+            setPlaylists={() => setPlaylists(playlists)}
+            playlists={playlists}
+            items={activePlaylist.items}
+          />
           <button onClick={() => exitPlaylist()}>Exit playlist</button>
         </div>
       );

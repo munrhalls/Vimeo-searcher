@@ -1,6 +1,6 @@
 import { Video } from "./Video";
 
-function Videos({ items, playlists }) {
+function Videos({ items, playlists, setPlaylists}) {
   return (
     <ul className="Videos">
       {items && items.data
@@ -9,6 +9,7 @@ function Videos({ items, playlists }) {
               <Video
                 key={item.uri}
                 playlists={playlists}
+                setPlaylists={setPlaylists}
                 iFrame={item.embed.html}
               />
             );
