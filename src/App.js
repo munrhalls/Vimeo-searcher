@@ -4,6 +4,7 @@ import Videos from "./components/Videos";
 import { PlaylistBtn } from "./components/PlaylistBtn.js";
 import { Loader } from "./components/Loader";
 import { Error } from "./components/Error";
+import { DisplayManager } from "./components/DisplayManager";
 
 function App() {
   const [error, setError] = useState(null);
@@ -14,43 +15,16 @@ function App() {
   const [activePlaylist, setActivePlaylist] = useState(undefined);
   const [playlists, setPlaylists] = useState([]);
 
-  function whatToDisplayLogic() {
-    if (!isLoaded && !search) {
-      return "Hello-page";
-    }
-    if (isLoaded && error) {
-      return <Loader />;
-    }
-    if (isLoaded && !error && !activePlaylist) {
-      let videos = [];
-      for (const [key, value] of Object.entries(searchVideos.data)) {
-        videos.push(value.embed.html);
-      }
-      return (
-        <Videos
-          setPlaylists={(playlists) => setPlaylists(playlists)}
-          playlists={playlists}
-          videos={videos}
-        />
-      );
-    }
-    if (isLoaded && !error && activePlaylist) {
-      let videos = [];
-      for (const [key, value] of Object.entries(activePlaylist.items)) {
-        videos.push(value);
-      }
-
-      return (
-        <div>
-          <Videos
-            setPlaylists={(playlists) => setPlaylists(playlists)}
-            playlists={playlists}
-            videos={activePlaylist.items}
-          />
-          <button onClick={() => exitPlaylist()}>Exit playlist</button>
-        </div>
-      );
-    }
+  let displayProps = {
+    searchVideos: searchVideos,
+    activePlaylist: activePlaylist,
+    setPlaylists: setPlaylists,
+    playlists: playlists,
+    exitPlaylist: exitPlaylist,
+    Loader: Loader,
+    isLoaded: isLoaded,
+    search: search,
+    error: error,
   }
 
   const addPlaylist = () => {
@@ -140,7 +114,7 @@ function App() {
               })
             : ""}
         </div>
-        {whatToDisplayLogic()}
+        <DisplayManager {...displayProps} />
       </div>
     </div>
   );
