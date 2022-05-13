@@ -101,7 +101,7 @@ function App() {
     <div className="App">
       <div className="Title">Make your personal Vimeo playlists.</div>
 
-      <div className="Container--horiz">
+      <div className="Container--vert">
         <ManageAccount
           isUserLoggedIn={isUserLoggedIn}
           setPlaylists={() => setPlaylists}

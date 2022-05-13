@@ -6,6 +6,8 @@
     background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(14, 14, 14) 35%, rgb(45, 45, 45) 100%);
     min-height: 100vh;
     color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .Title {

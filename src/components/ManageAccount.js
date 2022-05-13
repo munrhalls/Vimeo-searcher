@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const ManageAccount = ({ isUserLoggedIn, setPlaylists }) => {
-  function manageAccLogic() {
+  const [isForm, setIsForm] = useState(false);
+  function toggleAccForm() {}
+  function onSubmit() {}
+  function manageAccDisplay() {
     if (isUserLoggedIn) {
       console.log("set user playlists");
       return <div>Welcome Username</div>;
     }
-    if (!isUserLoggedIn) {
+    if (!isUserLoggedIn && !isForm) {
       return (
         <div>
-          <button>Make an account</button>
+          <button onClick={() => setIsForm(true)}>Make an account</button>
           <span>No e-mail registration required!</span>
         </div>
       );
     }
+    if (!isUserLoggedIn && isForm) {
+      return (
+        <form onSubmit={onSubmit}>
+          <input type="submit" />
+        </form>
+      );
+    }
   }
-  return <>{manageAccLogic()}</>;
+  return <>{manageAccDisplay()}</>;
 };
