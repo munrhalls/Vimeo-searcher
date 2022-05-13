@@ -6,6 +6,7 @@ import { Loader } from "./components/Loader";
 import { Error } from "./components/Error";
 import { DisplayManager } from "./components/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos";
+import { ManageAccount } from "./components/ManageAccount";
 
 function App() {
   const [error, setError] = useState(null);
@@ -15,6 +16,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [activePlaylist, setActivePlaylist] = useState(undefined);
   const [playlists, setPlaylists] = useState([]);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(undefined);
 
   let displayProps = {
     searchVideos: searchVideos,
@@ -94,11 +96,16 @@ function App() {
   function exitPlaylist() {
     setActivePlaylist(undefined);
   }
+
   return (
     <div className="App">
       <div className="Title">Make your personal Vimeo playlists.</div>
 
       <div className="Container--horiz">
+        <ManageAccount
+          isUserLoggedIn={isUserLoggedIn}
+          setPlaylists={() => setPlaylists}
+        />
         <SearchVideos {...searchProps} />
         <div className="Playlists">
           <button className="Button" onClick={() => addPlaylist()}>
