@@ -25,7 +25,7 @@ function App() {
     isLoaded: isLoaded,
     search: search,
     error: error,
-  }
+  };
 
   const addPlaylist = () => {
     setPlaylists([
@@ -38,23 +38,34 @@ function App() {
     ]);
   };
 
+  function getVidsFromLS() {
+    setIsLoaded(true);
+    setSearchVideos(
+      JSON.parse(localStorage.getItem("LOCAL_STORAGE_" + search))
+    );
+  }
+  function getVidsFromAPI(result) {
+    console.log("API CALL");
+    setIsLoaded(true);
+    setSearchVideos(result);
+    let localStorageKey = "LOCAL_STORAGE_" + search;
+    localStorage.setItem(localStorageKey, JSON.stringify(result));
+  }
+
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      const query =
-        "https://api.vimeo.com/videos?&width=480&height=360&query=" + search;
-      fetch(query, {
-        headers: new Headers({
-          Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
-        }),
-      })
+      fetch(
+        "https://api.vimeo.com/videos?&width=480&height=360&query=" + search,
+        {
+          headers: new Headers({
+            Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
+          }),
+        }
+      )
         .then((res) => res.json())
         .then(
           (result) => {
-            console.log("API CALL");
-            setIsLoaded(true);
-            setSearchVideos(result);
-            let localStorageKey = "LOCAL_STORAGE_" + search;
-            localStorage.setItem(localStorageKey, JSON.stringify(result));
+            getVidsFromAPI(result);
           },
           (error) => {
             setIsLoaded(true);
@@ -63,15 +74,11 @@ function App() {
         );
     }
     if (search && localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      setIsLoaded(true);
-      setSearchVideos(
-        JSON.parse(localStorage.getItem("LOCAL_STORAGE_" + search))
-      );
+      getVidsFromLS();
     }
   }, [search]);
 
   function togglePlaylist(playlist) {
-    console.log("toggle", playlist);
     setActivePlaylist(playlist);
   }
   function exitPlaylist() {
