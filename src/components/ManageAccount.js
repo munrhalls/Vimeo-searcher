@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 
-export const ManageAccount = ({ isUserLoggedIn, setPlaylists }) => {
+export const ManageAccount = ({
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+  setPlaylists,
+}) => {
   const [isForm, setIsForm] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  function toggleAccForm() {}
-  function onSubmit() {}
+  function onSubmit() {
+    const isUserInLS = localStorage.getItem(username);
+    const passwordMatch = password === localStorage.getItem(username.password);
+    if (isUserInLS & passwordMatch) {
+      setIsUserLoggedIn(true);
+    }
+  }
 
   function displayForm() {
     return (
@@ -28,10 +37,15 @@ export const ManageAccount = ({ isUserLoggedIn, setPlaylists }) => {
   }
   function displayUnlogged() {
     return (
-      <div>
-        <button onClick={() => setIsForm(true)}>Make an account</button>
-        <span>No e-mail registration required!</span>
-      </div>
+      <>
+        <div>
+          <div>
+            <button onClick={() => setIsForm(true)}>Make an account</button>
+            <span>No e-mail registration required!</span>
+          </div>
+          <button onClick={() => setIsForm(true)}>Log in</button>
+        </div>
+      </>
     );
   }
   function displayLogged() {

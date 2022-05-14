@@ -105,6 +105,7 @@ function App() {
         <ManageAccount
           isUserLoggedIn={isUserLoggedIn}
           setPlaylists={() => setPlaylists}
+          setIsUserLoggedIn={setIsUserLoggedIn}
         />
         <SearchVideos {...searchProps} />
         <div className="Playlists">
