@@ -4,25 +4,36 @@ export const ManageAccount = ({ isUserLoggedIn, setPlaylists }) => {
   const [isForm, setIsForm] = useState(false);
   function toggleAccForm() {}
   function onSubmit() {}
+
+  function displayForm() {
+    return (
+      <form onSubmit={onSubmit}>
+        <input placeholder="Username..." type="text" />
+        <input placeholder="Password..." type="text" />
+        <input type="submit" />
+      </form>
+    );
+  }
+  function displayUnlogged() {
+    return (
+      <div>
+        <button onClick={() => setIsForm(true)}>Make an account</button>
+        <span>No e-mail registration required!</span>
+      </div>
+    );
+  }
+  function displayLogged() {
+    return <div>Welcome Username</div>;
+  }
   function manageAccDisplay() {
     if (isUserLoggedIn) {
-      console.log("set user playlists");
-      return <div>Welcome Username</div>;
+      displayLogged();
     }
     if (!isUserLoggedIn && !isForm) {
-      return (
-        <div>
-          <button onClick={() => setIsForm(true)}>Make an account</button>
-          <span>No e-mail registration required!</span>
-        </div>
-      );
+      displayUnlogged();
     }
     if (!isUserLoggedIn && isForm) {
-      return (
-        <form onSubmit={onSubmit}>
-          <input type="submit" />
-        </form>
-      );
+      displayForm();
     }
   }
   return <>{manageAccDisplay()}</>;
