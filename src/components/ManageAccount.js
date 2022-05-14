@@ -2,14 +2,26 @@ import React, { useState } from "react";
 
 export const ManageAccount = ({ isUserLoggedIn, setPlaylists }) => {
   const [isForm, setIsForm] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   function toggleAccForm() {}
   function onSubmit() {}
 
   function displayForm() {
     return (
       <form onSubmit={onSubmit}>
-        <input placeholder="Username..." type="text" />
-        <input placeholder="Password..." type="text" />
+        <input
+          value={username}
+          placeholder="Username..."
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          placeholder="Password..."
+          value={password}
+          type="text"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <input type="submit" />
       </form>
     );
@@ -27,13 +39,13 @@ export const ManageAccount = ({ isUserLoggedIn, setPlaylists }) => {
   }
   function manageAccDisplay() {
     if (isUserLoggedIn) {
-      displayLogged();
+      return displayLogged();
     }
     if (!isUserLoggedIn && !isForm) {
-      displayUnlogged();
+      return displayUnlogged();
     }
     if (!isUserLoggedIn && isForm) {
-      displayForm();
+      return displayForm();
     }
   }
   return <>{manageAccDisplay()}</>;
