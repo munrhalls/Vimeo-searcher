@@ -18,6 +18,9 @@ function App() {
   const [playlists, setPlaylists] = useState([]);
   const [loggedUser, setLoggedUser] = useState(false);
 
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
   // const users = [{ name: "Jailian", password: "Burmakha" }, { name: "Bamikia", password: "Vulraghn" }];
   // localStorage.setItem('users', JSON.stringify(users))
   //SET VIA CONSOLE

@@ -19,15 +19,18 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
       setLoggedUser(loggedUser);
     }
   }
-  function onMakeAccSubmit() {
-    console.log("make acc submit");
+  function onMakeAccSubmit(e) {
+    e.preventDefault(e);
     const users = JSON.parse(localStorage.getItem("users"));
+    users.push({ name: username, password: password });
+    localStorage.setItem("users", JSON.stringify(users));
+    setIsMakeAccForm(false);
   }
   function displayMakeAccForm() {
     return (
       <div>
         <div>Make a new account.</div>
-        <form onSubmit={() => onMakeAccSubmit()}>
+        <form onSubmit={(e) => onMakeAccSubmit(e)}>
           <input
             value={username}
             placeholder="Username..."
