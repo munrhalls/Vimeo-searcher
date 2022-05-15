@@ -16,7 +16,16 @@ function App() {
   const [search, setSearch] = useState("");
   const [activePlaylist, setActivePlaylist] = useState(undefined);
   const [playlists, setPlaylists] = useState([]);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(undefined);
+  const [loggedUser, setLoggedUser] = useState(false);
+
+  // const users = [{ name: "Jailian", password: "Burmakha" }, { name: "Bamikia", password: "Vulraghn" }];
+  // localStorage.setItem('users', JSON.stringify(users))
+  //SET VIA CONSOLE
+  const users = JSON.parse(localStorage.getItem("users"));
+
+  // const user_formatLS = JSON.stringify(user);
+  // localStorage.setItem("loggedUser", user_formatLS);
+  // make acc func
 
   let displayProps = {
     searchVideos: searchVideos,
@@ -38,6 +47,14 @@ function App() {
     search: search,
     setSearch: setSearch,
   };
+
+  function determineUserStatus() {
+    const LSloggedUser = localStorage.getItem("loggedUser");
+
+    if (LSloggedUser) {
+      setLoggedUser(JSON.parse(LSloggedUser));
+    }
+  }
 
   const addPlaylist = () => {
     setPlaylists([
@@ -63,6 +80,10 @@ function App() {
     let localStorageKey = "LOCAL_STORAGE_" + search;
     localStorage.setItem(localStorageKey, JSON.stringify(result));
   }
+
+  useEffect(() => {
+    determineUserStatus();
+  }, [loggedUser]);
 
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
@@ -103,9 +124,9 @@ function App() {
 
       <div className="Container--vert">
         <ManageAccount
-          isUserLoggedIn={isUserLoggedIn}
+          loggedUser={loggedUser}
           setPlaylists={() => setPlaylists}
-          setIsUserLoggedIn={setIsUserLoggedIn}
+          setLoggedUser={setLoggedUser}
         />
         <SearchVideos {...searchProps} />
         <div className="Playlists">
