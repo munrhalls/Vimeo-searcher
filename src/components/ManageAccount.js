@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   const [isIsMakeAccForm, setIsMakeAccForm] = useState(false);
   const [isIsLoginForm, setIsLoginForm] = useState(false);
+  const [formError, setFormError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,9 +23,22 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   function onMakeAccSubmit(e) {
     e.preventDefault(e);
     const users = JSON.parse(localStorage.getItem("users"));
-    users.push({ name: username, password: password });
-    localStorage.setItem("users", JSON.stringify(users));
-    setIsMakeAccForm(false);
+    if ([...users.filter((user) => user.name === username)].length) {
+      setFormError(
+        "Account with this name already exists. Please choose a different name."
+      );
+    } else if (password.length < 3 || password.length > 24) {
+      setFormError(
+        "Password is a bit too short. Please make it at least 3 characters long, and not longer than 24 characters."
+      );
+    } else {
+      users.push({ name: username, password: password });
+      users.unshift(
+        JSON.stringify({ loggedUser: { name: username, password: password } })
+      );
+      localStorage.setItem("users", JSON.stringify(users));
+      setIsMakeAccForm(false);
+    }
   }
   function displayMakeAccForm() {
     return (
@@ -45,7 +59,15 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
           />
           <input type="submit" />
         </form>
-        <button onClick={() => setIsMakeAccForm(false)}>Exit</button>
+        {formError ? <div className="FormError">{formError}</div> : ""}
+        <button
+          onClick={() => {
+            setIsMakeAccForm(false);
+            setFormError("");
+          }}
+        >
+          Exit
+        </button>
       </div>
     );
   }
@@ -107,8 +129,16 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
         <button
           onClick={() => {
             {
-              localStorage.removeItem("loggedUser");
-              setLoggedUser(undefined);
+              // get users ls json parse
+              // check if first === logged;
+              // if so, shift (rms logged)
+              // re string json, set item ls
+              const users = JSON.parse(localStorage.getItem("users"));
+              if (users[0].hasOwnProperty("loggedUser")) {
+                users.shift();
+                localStorage.setItem("users", JSON.stringify(users));
+                setLoggedUser(undefined);
+              }
             }
           }}
         >
