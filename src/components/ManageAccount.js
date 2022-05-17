@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   const [isIsMakeAccForm, setIsMakeAccForm] = useState(false);
   const [isIsLoginForm, setIsLoginForm] = useState(false);
+  const [isEditAccForm, setIsEditAccForm] = useState(false);
   const [formError, setFormError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +29,34 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
     localStorage.removeItem("logged");
     setLoggedUser(undefined);
   }
+
+  function onEditAccSubmit(e) {
+    e.preventDefault(e);
+    if (loggedUser) {
+      const users = JSON.parse(localStorage.getItem("users"));
+      const user = users.find(
+        (user) =>
+          user.name === loggedUser.name && user.password === loggedUser.password
+      );
+      if ([...users.filter((user) => user.name === username)].length) {
+        setFormError(
+          "Account with this name already exists. Please choose a different name."
+        );
+      } else if (password.length < 3 || password.length > 24) {
+        setFormError(
+          "Password is a bit too short. Please make it at least 3 characters long, and not longer than 24 characters."
+        );
+      } else {
+        user.name = username;
+        user.password = password;
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("logged", JSON.stringify(user));
+        setLoggedUser(user);
+        setIsEditAccForm(false);
+      }
+    }
+  }
+
   function onMakeAccSubmit(e) {
     e.preventDefault(e);
     const users = JSON.parse(localStorage.getItem("users"));
@@ -122,6 +151,31 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
       </div>
     );
   }
+  function displayEditAccForm() {
+    return (
+      <div>
+        <form onSubmit={(e) => onEditAccSubmit(e)}>
+          <label>Edit account name:</label>
+          <input
+            value={username}
+            placeholder="Username..."
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <label>Edit password:</label>
+          <input
+            placeholder="Password..."
+            value={password}
+            type="text"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input type="submit" />
+        </form>
+        {formError ? <div>{formError}</div> : ""}
+        <button onClick={() => setIsEditAccForm(false)}>Exit</button>
+      </div>
+    );
+  }
   function displayUnlogged() {
     return (
       <>
@@ -144,13 +198,17 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
         <span style={{ fontWeight: "bold", letterSpacing: "1px" }}>
           {loggedUser.name}!
         </span>
+        <button onClick={() => setIsEditAccForm(true)}>Edit account</button>
         <button onClick={(e) => logOut(e)}>Log out</button>
       </div>
     );
   }
   function manageAccDisplay() {
-    if (loggedUser) {
+    if (loggedUser && !isEditAccForm) {
       return displayLogged();
+    }
+    if (loggedUser && isEditAccForm) {
+      return displayEditAccForm();
     }
     if (!loggedUser && !isIsMakeAccForm && !isIsLoginForm) {
       return displayUnlogged();
