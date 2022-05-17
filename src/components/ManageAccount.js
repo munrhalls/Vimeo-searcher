@@ -14,7 +14,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
       (user) => user.name === username && user.password === password
     );
     if (users && userLogged) {
-      localStorage.setItem("loggedUser", JSON.stringify(userLogged));
+      localStorage.setItem("logged", JSON.stringify(userLogged));
       setLoggedUser(userLogged);
     }
     if (users && !userLogged) {
@@ -25,7 +25,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   }
   function logOut(e) {
     e.preventDefault();
-    localStorage.removeItem("loggedUser");
+    localStorage.removeItem("logged");
     setLoggedUser(undefined);
   }
   function onMakeAccSubmit(e) {
@@ -103,6 +103,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
           No account? Make a new one in 5 seconds.{" "}
           <button
             onClick={() => {
+              setFormError("");
               setIsLoginForm(false);
               setIsMakeAccForm(true);
             }}
@@ -110,7 +111,14 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
             Make account
           </button>
         </div>
-        <button onClick={() => setIsLoginForm(false)}>Exit</button>
+        <button
+          onClick={() => {
+            setFormError("");
+            setIsLoginForm(false);
+          }}
+        >
+          Exit
+        </button>
       </div>
     );
   }
