@@ -10,15 +10,18 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   function onLoginSubmit(e) {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users"));
-    const loggedUser = users.find(
+    const userLogged = users.find(
       (user) => user.name === username && user.password === password
     );
-    if (users && loggedUser) {
-      users.shift();
-      users.unshift({ loggedUser: loggedUser });
-      localStorage.setItem("users", JSON.stringify(users));
-      setLoggedUser(loggedUser);
+    if (users && userLogged) {
+      localStorage.setItem("loggedUser", JSON.stringify(userLogged));
+      setLoggedUser(userLogged);
     }
+  }
+  function logOut(e) {
+    e.preventDefault();
+    localStorage.removeItem("loggedUser");
+    setLoggedUser(undefined);
   }
   function onMakeAccSubmit(e) {
     e.preventDefault(e);
@@ -34,9 +37,10 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
     } else {
       users.push({ name: username, password: password });
       users.unshift(
-        JSON.stringify({ loggedUser: { name: username, password: password } })
+        JSON.stringify({ logged: { name: username, password: password } })
       );
       localStorage.setItem("users", JSON.stringify(users));
+      setLoggedUser({ name: username, password: password });
       setIsMakeAccForm(false);
     }
   }
@@ -126,24 +130,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
         <span style={{ fontWeight: "bold", letterSpacing: "1px" }}>
           {username}!
         </span>
-        <button
-          onClick={() => {
-            {
-              // get users ls json parse
-              // check if first === logged;
-              // if so, shift (rms logged)
-              // re string json, set item ls
-              const users = JSON.parse(localStorage.getItem("users"));
-              if (users[0].hasOwnProperty("loggedUser")) {
-                users.shift();
-                localStorage.setItem("users", JSON.stringify(users));
-                setLoggedUser(undefined);
-              }
-            }
-          }}
-        >
-          Log out
-        </button>
+        <button onClick={(e) => logOut(e)}>Log out</button>
       </div>
     );
   }

@@ -21,14 +21,7 @@ function App() {
   if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify([]));
   }
-  // const users = [{ name: "Jailian", password: "Burmakha" }, { name: "Bamikia", password: "Vulraghn" }];
-  // localStorage.setItem('users', JSON.stringify(users))
-  //SET VIA CONSOLE
-  const users = JSON.parse(localStorage.getItem("users"));
-
-  // const user_formatLS = JSON.stringify(user);
-  // localStorage.setItem("loggedUser", user_formatLS);
-  // make acc func
+  // const users = JSON.parse(localStorage.getItem("users"));
 
   let displayProps = {
     searchVideos: searchVideos,
@@ -51,11 +44,10 @@ function App() {
     setSearch: setSearch,
   };
 
-  function determineUserStatus() {
-    const LSloggedUser = localStorage.getItem("loggedUser");
-
-    if (LSloggedUser) {
-      setLoggedUser(JSON.parse(LSloggedUser));
+  function determineLoggedStatus() {
+    const logged = localStorage.getItem("logged");
+    if (logged) {
+      setLoggedUser(JSON.parse(logged));
     }
   }
 
@@ -85,7 +77,7 @@ function App() {
   }
 
   useEffect(() => {
-    determineUserStatus();
+    determineLoggedStatus();
   }, [loggedUser]);
 
   useEffect(() => {
