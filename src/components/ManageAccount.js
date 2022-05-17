@@ -142,7 +142,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
       <div>
         Welcome{" "}
         <span style={{ fontWeight: "bold", letterSpacing: "1px" }}>
-          {username}!
+          {loggedUser.name}!
         </span>
         <button onClick={(e) => logOut(e)}>Log out</button>
       </div>

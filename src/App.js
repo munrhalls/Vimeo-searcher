@@ -77,8 +77,9 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(loggedUser);
     determineLoggedStatus();
-  }, [loggedUser]);
+  }, []);
 
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
