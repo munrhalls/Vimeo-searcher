@@ -17,6 +17,11 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
       localStorage.setItem("loggedUser", JSON.stringify(userLogged));
       setLoggedUser(userLogged);
     }
+    if (users && !userLogged) {
+      setFormError(
+        "Username or password you entered do not match. Please enter proper username and password."
+      );
+    }
   }
   function logOut(e) {
     e.preventDefault();
@@ -93,6 +98,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
           />
           <input type="submit" />
         </form>
+        {formError ? <div>{formError}</div> : ""}
         <div>
           No account? Make a new one in 5 seconds.{" "}
           <button
