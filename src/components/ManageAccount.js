@@ -4,6 +4,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   const [isIsMakeAccForm, setIsMakeAccForm] = useState(false);
   const [isIsLoginForm, setIsLoginForm] = useState(false);
   const [isEditAccForm, setIsEditAccForm] = useState(false);
+  const [isDelAccForm, setIsDelAccForm] = useState(false);
   const [formError, setFormError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +30,17 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
     localStorage.removeItem("logged");
     setLoggedUser(undefined);
   }
-
+  function onDelAccSubmit(e) {
+    e.preventDefault();
+    let users = JSON.parse(localStorage.getItem("users"));
+    users = users.filter(
+      (user) =>
+        user.name !== loggedUser.name && user.password !== loggedUser.password
+    );
+    localStorage.setItem("logged", null);
+    localStorage.setItem("users", JSON.stringify(users));
+    setLoggedUser(undefined);
+  }
   function onEditAccSubmit(e) {
     e.preventDefault(e);
     if (loggedUser) {
@@ -169,11 +180,48 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
             type="text"
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button
+            onClick={() => {
+              setIsEditAccForm(false);
+              setFormError("");
+              setIsDelAccForm(true);
+            }}
+          >
+            Delete account
+          </button>
           <input type="submit" />
         </form>
         {formError ? <div>{formError}</div> : ""}
         <button onClick={() => setIsEditAccForm(false)}>Exit</button>
       </div>
+    );
+  }
+  function displayDelAccForm() {
+    return (
+      <form onSubmit={(e) => onDelAccSubmit(e)}>
+        <div>Username: {loggedUser.name}</div>
+        <div>Password: {loggedUser.password}</div>
+        <label>This action will delete this account. Are you sure?</label>
+        <button
+          onClick={(e) => {
+            onDelAccSubmit(e);
+            setIsEditAccForm(false);
+            setFormError("");
+            setIsDelAccForm(false);
+          }}
+        >
+          Delete account
+        </button>
+        <button
+          onClick={(e) => {
+            setIsDelAccForm(false);
+            setIsEditAccForm(true);
+          }}
+        >
+          Go back
+        </button>
+        <input type="submit" />
+      </form>
     );
   }
   function displayUnlogged() {
@@ -206,6 +254,9 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
   function manageAccDisplay() {
     if (loggedUser && !isEditAccForm) {
       return displayLogged();
+    }
+    if (loggedUser && isDelAccForm) {
+      return displayDelAccForm();
     }
     if (loggedUser && isEditAccForm) {
       return displayEditAccForm();
