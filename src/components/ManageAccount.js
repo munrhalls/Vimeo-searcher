@@ -40,6 +40,9 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
     localStorage.setItem("logged", null);
     localStorage.setItem("users", JSON.stringify(users));
     setLoggedUser(undefined);
+    setIsEditAccForm(false);
+    setIsDelAccForm(false);
+    setFormError("");
   }
   function onEditAccSubmit(e) {
     e.preventDefault(e);
@@ -181,7 +184,8 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setIsEditAccForm(false);
               setFormError("");
               setIsDelAccForm(true);
@@ -202,16 +206,6 @@ export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
         <div>Username: {loggedUser.name}</div>
         <div>Password: {loggedUser.password}</div>
         <label>This action will delete this account. Are you sure?</label>
-        <button
-          onClick={(e) => {
-            onDelAccSubmit(e);
-            setIsEditAccForm(false);
-            setFormError("");
-            setIsDelAccForm(false);
-          }}
-        >
-          Delete account
-        </button>
         <button
           onClick={(e) => {
             setIsDelAccForm(false);
