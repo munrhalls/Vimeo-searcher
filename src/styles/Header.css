@@ -1,6 +1,7 @@
 .Header {
     height: 5rem;
-    background-color: aliceblue;
+    background-color: #fff;
+    background: #fff;
     color: #777;
     font-weight: bold;
     padding: 1rem;
