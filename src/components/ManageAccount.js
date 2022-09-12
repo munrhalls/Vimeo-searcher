@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const ManageAccount = ({ loggedUser, setLoggedUser, setPlaylists }) => {
+export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
   const [isIsMakeAccForm, setIsMakeAccForm] = useState(false);
   const [isIsLoginForm, setIsLoginForm] = useState(false);
   const [isEditAccForm, setIsEditAccForm] = useState(false);

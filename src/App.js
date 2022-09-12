@@ -8,7 +8,7 @@ import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos";
 import { ManageAccount } from "./components/ManageAccount";
 import Header from "./components/Header/Header";
-import useGlobal from "./components/Contexts/GlobalProvider";
+import { useGlobal } from "./components/Contexts/GlobalProvider";
 
 function App() {
   const [error, setError] = useState(null);
@@ -138,4 +138,4 @@ function App() {
   );
 }
 
-export default App;
+export { App };
