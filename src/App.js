@@ -8,6 +8,7 @@ import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos";
 import { ManageAccount } from "./components/ManageAccount";
 import Header from "./components/Header/Header";
+import GlobalProvider from "./components/Contexts/GlobalProvider";
 
 function App() {
   const [error, setError] = useState(null);

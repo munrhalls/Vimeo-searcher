@@ -1,7 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
+const GlobalContext = React.createContext();
 
-export 
+export function useGlobal() {
+  return useContext(GlobalContext);
+}
 export default function GlobalProvider({ children }) {
-  return <div>GlobalProvider</div>;
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const value = {currentUser}
+
+  return <GlobalContext.Provider value={...value}>{children}</GlobalContext.Provider>;
 }
