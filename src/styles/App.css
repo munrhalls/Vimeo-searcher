@@ -1,6 +1,6 @@
 @import './Videos.css';
 @import './Playlists.css';
-@import 'Container.css';
+@import 'Account.css';
 
 .App {
     min-height: 100vh;
@@ -11,7 +11,8 @@
 }
 
 .Title {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
+    font-weight: bold;
     text-align: center;
 
 }

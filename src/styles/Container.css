@@ -1,9 +1,0 @@
-.Container--horiz {
-    display: flex;
-    flex-direction: row;
-}
-
-.Container--vert {
-    display: flex;
-    flex-direction: column; 
-}

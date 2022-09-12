@@ -7,6 +7,7 @@ import { Loader } from "./components/Loader";
 import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos";
 import { ManageAccount } from "./components/ManageAccount";
+import Header from "./components/Header/Header";
 
 function App() {
   const [error, setError] = useState(null);
@@ -117,33 +118,27 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <div className="Title">SEARCH VIDEOS</div>
 
-      <div className="Container--vert">
-        <ManageAccount
-          loggedUser={loggedUser}
-          setPlaylists={() => setPlaylists}
-          setLoggedUser={setLoggedUser}
-        />
-        <SearchVideos {...searchProps} />
-        <div className="Playlists">
-          <button className="Button" onClick={() => addPlaylist()}>
-            Add new playlist
-          </button>
-          {playlists
-            ? playlists.map((playlist) => {
-                return (
-                  <PlaylistBtn
-                    key={Math.random()}
-                    playlist={playlist}
-                    onClick={() => togglePlaylist(playlist)}
-                  />
-                );
-              })
-            : ""}
-        </div>
-        <DisplayManager {...displayProps} />
+      <SearchVideos {...searchProps} />
+      <div className="Playlists">
+        <button className="Button" onClick={() => addPlaylist()}>
+          Add new playlist
+        </button>
+        {playlists
+          ? playlists.map((playlist) => {
+              return (
+                <PlaylistBtn
+                  key={Math.random()}
+                  playlist={playlist}
+                  onClick={() => togglePlaylist(playlist)}
+                />
+              );
+            })
+          : ""}
       </div>
+      <DisplayManager {...displayProps} />
     </div>
   );
 }
