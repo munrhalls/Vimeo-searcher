@@ -3,15 +3,17 @@
 @import 'Container.css';
 
 .App {
-    background-color: silver;
-    color: #fff;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: rgb(128,128,128);
+    background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
 }
 
 .Title {
     font-size: 2.5rem;
-    color: #fff;
+    text-align: center;
+
 }
 .Title__subtitle {
     font-size: 1.5rem;
@@ -22,7 +24,6 @@
     border-radius: 3px;
     max-height: 3rem;
     height: 3rem;
-    margin: 1rem;
     padding: 0.5rem;
     font-weight: bold;
     font-size: 1.75rem;
@@ -35,5 +36,4 @@
     background-color: #fff;
     height: 3rem;
     width: 12rem;
-    margin: 1rem;
 }

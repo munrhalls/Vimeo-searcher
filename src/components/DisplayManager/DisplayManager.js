@@ -44,7 +44,7 @@ export const DisplayManager = ({
   }
   function whatToDisplayLogic() {
     if (!isLoaded && !search) {
-      return "Hello-page";
+      return <b>Hello-page</b>;
     }
     if (isLoaded && error) {
       return <Loader />;

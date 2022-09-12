@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { PlaylistBtn } from "./components/PlaylistBtn.js";
 import { Loader } from "./components/Loader";
 // import { Error } from "./components/Error";
-import { DisplayManager } from "./components/DisplayManager";
+import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos";
 import { ManageAccount } from "./components/ManageAccount";
 
@@ -117,7 +117,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Title">Make your personal Vimeo playlists.</div>
+      <div className="Title">SEARCH VIDEOS</div>
 
       <div className="Container--vert">
         <ManageAccount
