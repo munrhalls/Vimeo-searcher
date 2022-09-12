@@ -8,7 +8,7 @@ import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos";
 import { ManageAccount } from "./components/ManageAccount";
 import Header from "./components/Header/Header";
-import GlobalProvider from "./components/Contexts/GlobalProvider";
+import useGlobal from "./components/Contexts/GlobalProvider";
 
 function App() {
   const [error, setError] = useState(null);
@@ -20,6 +20,7 @@ function App() {
   const [playlists, setPlaylists] = useState([]);
   const [loggedUser, setLoggedUser] = useState(false);
 
+  const { determineLoggedStatus } = useGlobal();
   if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify([]));
   }
@@ -46,13 +47,6 @@ function App() {
     search: search,
     setSearch: setSearch,
   };
-
-  function determineLoggedStatus() {
-    const logged = localStorage.getItem("logged");
-    if (logged) {
-      setLoggedUser(JSON.parse(logged));
-    }
-  }
 
   const addPlaylist = () => {
     setPlaylists([
