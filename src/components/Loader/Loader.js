@@ -1,7 +1,9 @@
 import React from "react";
+// Loader by Munrhalls (me)
 
 export function Loader({ children, active }) {
-  let decrement = [70, 60, 50, 40, 30, 20, 10];
+  const decrement = [70, 60, 50, 40, 30, 20, 10];
+
   return (
     <>
       {active ? (

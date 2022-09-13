@@ -28,6 +28,9 @@
     display: flex;
     justify-content: safe center;
     align-items: safe center;
+
+    /* pos */
+    position: relative;
 }
 
 .Loader__symbol {
@@ -35,5 +38,10 @@
     height: 70%;
     width: 70%;
     border: 3rem solid #777;
+    border-radius: 30%;
+
+    /* pos */
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
 }
 
