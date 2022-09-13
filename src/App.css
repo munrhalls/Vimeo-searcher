@@ -18,38 +18,7 @@ input, button {
     flex-direction: column;
     background: rgb(128,128,128);
     background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
-}
 
-.Playlists {
-    min-height: 1rem;
-    width: 9rem;
-}
-
-.Title {
-    font-size: 1.75rem;
-    font-weight: bold;
-    text-align: center;
-
-}
-.Title__subtitle {
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.Search {
-    border-radius: 3px;
-    max-height: 3rem;
-    height: 3rem;
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: 1.75rem;
-}
-
-.Button {
-    font-weight: bold;
-    font-size: 1.25rem;
-    border: 3px;
-    background-color: #fff;
-    height: 3rem;
-    width: 12rem;
+    display: flex;
+    flex-direction: column;   
 }

@@ -6,8 +6,10 @@ import { Loader } from "./components/Loader/Loader";
 // import { Error } from "./components/Error";
 import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos/SearchVideos";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { useGlobal } from "./components/Contexts/GlobalProvider";
+import useWindowHeight from "./components/Hooks/useWindowHeight";
 
 function App() {
   const [searchVideos, setSearchVideos] = useState([]);
@@ -61,11 +63,19 @@ function App() {
   }, [search]);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        height: `${useWindowHeight()}px`,
+        minHeight: `${useWindowHeight()}px`,
+        maxHeight: `${useWindowHeight()}px`,
+      }}
+    >
       <Header />
       <SearchVideos {...searchProps} />
 
       <DisplayManager searchVideos={searchVideos} search={search} />
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,21 @@
+.Footer {
+    margin-top: auto;
+    background: rgb(72, 72, 72);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(77,77,77,1) 42%, rgba(117,117,117,1) 100%);
+    height: 3rem;
+
+    display: flex;
+    justify-content: safe center;
+    align-items: safe center;
+}
+
+.Footer__attribs {
+    margin-left: auto;
+    margin-right: 1.5rem;
+}
+
+.Footer__attribs__link {
+    font-size: .75rem;
+    outline: none;
+    color: #fff;
+}
