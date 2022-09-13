@@ -1,0 +1,10 @@
+@media screen and (max-width: 600px) {
+    .Video {
+    
+    }
+    /* !important's because it's iframe */
+    .Video__iFrame {
+        height: 100% !important;
+        width: 100% !important;
+    }
+}
