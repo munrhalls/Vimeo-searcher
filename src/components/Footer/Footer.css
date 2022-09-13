@@ -16,7 +16,7 @@
     letter-spacing: 1px;
     height: 2.5rem;
     font-family:   'Neuropol X Rg',  'Beware',  'Good Times Rg', 'Libre Baskerville', 'Libre Baskerville', 'Cilica';
-
+    /* display */
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -34,13 +34,14 @@
 }
 
 .Footer__attribs {
+    /* box */
     margin: 0 1.5rem;
     max-width: 45%;
-
+    height: 2.5rem;
+    /* display */
     display: flex;
     justify-content: safe center;
     align-items: safe center;
-    height: 2.5rem;
 }
 
 .Footer__attribs__metaTitle {
