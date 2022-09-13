@@ -1,8 +1,11 @@
+/* globals */
+@import './Fonts/Fonts.css';
+/* from comps */
 @import './components/Header/Header.css';
 @import './components/SearchVideos/SearchVideos.css';
 @import './components/DisplayManager/DisplayManager.css';
 @import './components/ManageAccount/ManageAccount.css';
-@import './Fonts/Fonts.css';
+@import './components/Footer/Footer.css';
 
 input, button {
     font-family: 'BlackChancery', 'Neuropol X Rg',  'Beware',  'Good Times Rg', 'Libre Baskerville', 'Libre Baskerville', 'Cilica';
