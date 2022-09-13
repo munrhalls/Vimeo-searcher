@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('LibreBaskerville-Bold.woff2') format('woff2'),
+        url('LibreBaskerville-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Good Times Rg';
+    src: url('GoodTimesRg-Regular.woff2') format('woff2'),
+        url('GoodTimesRg-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cilica';
+    src: url('Cilica.woff2') format('woff2'),
+        url('Cilica.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Beware';
+    src: url('Beware.woff2') format('woff2'),
+        url('Beware.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('LibreBaskerville-Regular.woff2') format('woff2'),
+        url('LibreBaskerville-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BlackChancery';
+    src: url('BlackChancery.woff2') format('woff2'),
+        url('BlackChancery.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('LibreBaskerville-Italic.woff2') format('woff2'),
+        url('LibreBaskerville-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cilica';
+    src: url('Cilica-Virus.woff2') format('woff2'),
+        url('Cilica-Virus.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cilica';
+    src: url('Cilica-Multispore.woff2') format('woff2'),
+        url('Cilica-Multispore.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cilica';
+    src: url('Cilica-Spore.woff2') format('woff2'),
+        url('Cilica-Spore.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neuropol X Rg';
+    src: url('NeuropolXRg-Regular.woff2') format('woff2'),
+        url('NeuropolXRg-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

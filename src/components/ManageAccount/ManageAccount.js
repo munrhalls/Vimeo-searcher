@@ -9,6 +9,18 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // const users = JSON.parse(localStorage.getItem("users"));
+  //commit
+
+  // useEffect(() => {
+  //   console.log(loggedUser);
+  //   determineLoggedStatus();
+  // }, []);
+
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
+
   function onLoginSubmit(e) {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users"));
@@ -207,7 +219,6 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
     );
   }
 
-
   function displayDelAccForm() {
     return (
       <form onSubmit={(e) => onDelAccSubmit(e)}>
@@ -227,7 +238,6 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
     );
   }
 
-
   function displayUnlogged() {
     return (
       <>
@@ -244,7 +254,6 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
     );
   }
 
-  
   function displayLogged() {
     return (
       <div>
@@ -267,7 +276,6 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
     if (loggedUser && isEditAccForm) {
       return displayEditAccForm();
     }
-
 
     if (!loggedUser && !isIsMakeAccForm && !isIsLoginForm) {
       return displayUnlogged();

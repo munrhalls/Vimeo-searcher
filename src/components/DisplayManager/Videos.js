@@ -1,18 +1,11 @@
 import { Video } from "./Video";
 
-function Videos({ videos, playlists, setPlaylists }) {
+function Videos({ videos }) {
   return (
     <ul className="Videos">
       {videos
         ? videos.map((video, i) => {
-            return (
-              <Video
-                key={video}
-                playlists={playlists}
-                setPlaylists={setPlaylists}
-                video={video}
-              />
-            );
+            return <Video key={video} video={video} />;
           })
         : "This playlist or collection of search results is currently empty."}
     </ul>

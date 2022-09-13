@@ -2,8 +2,14 @@
 @import './components/SearchVideos/SearchVideos.css';
 @import './components/DisplayManager/DisplayManager.css';
 @import './components/ManageAccount/ManageAccount.css';
+@import './Fonts/Fonts.css';
+
+input, button {
+    font-family: 'Beware';
+}
 
 .App {
+    font-family:  'Libre Baskerville' ,'Good Times Rg','Cilica','Beware','BlackChancery','Libre Baskerville','Neuropol X Rg';
     min-height: 100vh;
     display: flex;
     flex-direction: column;
