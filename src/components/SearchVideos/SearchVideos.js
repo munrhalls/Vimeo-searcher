@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGlobal } from "../Contexts/GlobalProvider";
 
 export const SearchVideos = ({
@@ -6,13 +6,19 @@ export const SearchVideos = ({
   setSearchInput: setSearchInput,
   setSearch: setSearch,
 }) => {
+  const inputRef = useRef();
   const { setIsLoading } = useGlobal();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  });
 
   return (
     <div className="SearchVideos">
       <div className="SearchVideos__title">SEARCH VIDEOS</div>
 
       <input
+        ref={inputRef}
         className="SearchVideos__input"
         placeholder="Type here..."
         type="text"
