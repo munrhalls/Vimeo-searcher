@@ -11,7 +11,7 @@ function App() {
   const [searchVideos, setSearchVideos] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
-  const { setIsLoading } = useGlobal();
+  const { setIsLoading, getVidsFromVIMEO } = useGlobal();
 
   let searchProps = {
     searchInput: searchInput,
@@ -32,31 +32,47 @@ function App() {
     let localStorageKey = "LOCAL_STORAGE_" + search;
     localStorage.setItem(localStorageKey, JSON.stringify(result));
   }
-
+  async function handleSubmit() {
+    // e.preventDefault();
+    try {
+      const res = await getVidsFromVIMEO(search);
+      const jsonRes = await res.json();
+      const videos = jsonRes;
+      setSearchVideos(() => videos);
+      let localStorageKey = "LOCAL_STORAGE_" + search;
+      localStorage.setItem(localStorageKey, JSON.stringify(videos));
+    } catch (e) {
+      console.error(e);
+    }
+  }
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      fetch(
-        "https://api.vimeo.com/videos?&width=480&height=360&query=" + search,
-        {
-          headers: new Headers({
-            Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
-          }),
-        }
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            getVidsFromAPI(result);
-          },
-          (error) => {}
-        );
+      // fetch(
+      //   "https://api.vimeo.com/videos?&width=480&height=360&query=" + search,
+      //   {
+      //     headers: new Headers({
+      //       Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
+      //     }),
+      //   }
+      // )
+      //   .then((res) => res.json())
+      //   .then(
+      //     (result) => {
+      //       console.log("API CALL");
+      //       setSearchVideos(() => result);
+      //       let localStorageKey = "LOCAL_STORAGE_" + search;
+      //       localStorage.setItem(localStorageKey, JSON.stringify(result));
+      //     },
+      //     (error) => {}
+      //   );
+      handleSubmit();
     }
 
     if (search && localStorage.getItem("LOCAL_STORAGE_" + search)) {
       getVidsFromLS();
     }
   }, [search]);
-  
+
   return (
     <div
       className="App"

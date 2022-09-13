@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import UsersAPI from "./UsersAPI";
+import VimeoAPI from "./VimeoAPI";
 import { Loader } from "../Loader/Loader";
 
 const GlobalContext = React.createContext();
@@ -11,7 +12,7 @@ export function useGlobal() {
 export function GlobalProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const value = { isLoading, setIsLoading, ...UsersAPI() };
+  const value = { isLoading, setIsLoading, ...UsersAPI(), ...VimeoAPI() };
   return (
     <GlobalContext.Provider value={value}>
       <Loader active={isLoading}>{children}</Loader>
