@@ -33,38 +33,18 @@ function App() {
     localStorage.setItem(localStorageKey, JSON.stringify(result));
   }
   async function handleSubmit() {
-    // e.preventDefault();
     try {
       const res = await getVidsFromVIMEO(search);
-      const jsonRes = await res.json();
-      const videos = jsonRes;
+      const videos = await res.json();
+
       setSearchVideos(() => videos);
-      let localStorageKey = "LOCAL_STORAGE_" + search;
-      localStorage.setItem(localStorageKey, JSON.stringify(videos));
+      localStorage.setItem("LOCAL_STORAGE_" + search, JSON.stringify(videos));
     } catch (e) {
       console.error(e);
     }
   }
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      // fetch(
-      //   "https://api.vimeo.com/videos?&width=480&height=360&query=" + search,
-      //   {
-      //     headers: new Headers({
-      //       Authorization: `Bearer ceb8f8f94bfe86435e2261118fb7bf30`,
-      //     }),
-      //   }
-      // )
-      //   .then((res) => res.json())
-      //   .then(
-      //     (result) => {
-      //       console.log("API CALL");
-      //       setSearchVideos(() => result);
-      //       let localStorageKey = "LOCAL_STORAGE_" + search;
-      //       localStorage.setItem(localStorageKey, JSON.stringify(result));
-      //     },
-      //     (error) => {}
-      //   );
       handleSubmit();
     }
 
