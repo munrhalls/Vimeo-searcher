@@ -2,21 +2,27 @@ import React from "react";
 import { VideoMenu } from "./VideoMenu";
 
 export const Video = ({ video, playlists, setPlaylists }) => {
-  let vidHtmlAndParams;
-  function handleStrParams(video) {
-    const videoArr = video?.split('"');
-    videoArr[videoArr?.indexOf(" width=") + 1] = "";
-    videoArr[videoArr?.indexOf(" height=") + 1] = "";
-    vidHtmlAndParams = videoArr?.join("");
+  function getVidSrc() {
+    const videoArr = video.split('"');
+    const src = videoArr[1];
+    return src;
   }
-  if (video) {
-    handleStrParams(video);
-  }
+
   return (
     <div className="Video">
       {video ? (
         <div>
-          <div dangerouslySetInnerHTML={{ __html: vidHtmlAndParams }} />
+          <iframe
+            src={getVidSrc()}
+            controls
+            preload="metadata"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            height="100%"
+            width="100%"
+          ></iframe>
+
           <button>Add to playlist</button>
           <VideoMenu
             video={video}
