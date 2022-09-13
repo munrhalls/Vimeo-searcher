@@ -1,12 +1,11 @@
-import "./styles//App.css";
+import "./App.css";
 import React, { useEffect, useState } from "react";
 // import Videos from "./components/Videos";
 import { PlaylistBtn } from "./components/PlaylistBtn.js";
 import { Loader } from "./components/Loader";
 // import { Error } from "./components/Error";
 import { DisplayManager } from "./components/DisplayManager/DisplayManager";
-import { SearchVideos } from "./components/SearchVideos";
-import { ManageAccount } from "./components/ManageAccount";
+import { SearchVideos } from "./components/SearchVideos/SearchVideos";
 import Header from "./components/Header/Header";
 import { useGlobal } from "./components/Contexts/GlobalProvider";
 
@@ -114,8 +113,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="Title">SEARCH VIDEOS</div>
-
       <SearchVideos {...searchProps} />
       <div className="Playlists">
         <button className="Button" onClick={() => addPlaylist()}>

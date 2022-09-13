@@ -1,7 +1,7 @@
-@import './Header.css';
-@import './Videos.css';
-@import './Playlists.css';
-@import 'Account.css';
+@import './components/Header/Header.css';
+@import './components/SearchVideos/SearchVideos.css';
+@import './components/DisplayManager/DisplayManager.css';
+@import './components/ManageAccount/ManageAccount.css';
 
 .App {
     min-height: 100vh;
@@ -9,6 +9,11 @@
     flex-direction: column;
     background: rgb(128,128,128);
     background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
+}
+
+.Playlists {
+    min-height: 1rem;
+    width: 9rem;
 }
 
 .Title {

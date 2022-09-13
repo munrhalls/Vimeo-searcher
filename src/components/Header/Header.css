@@ -1,0 +1,19 @@
+.Header {
+    height: 3rem;
+    background-color: #fff;
+    background: #fff;
+    color: #777;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: safe center;
+}
+
+.Header__title {
+    font-weight:  lighter;
+    font-size: 1.25rem;
+    padding: 0;
+    margin: 0;
+    margin-left: 1rem;
+    letter-spacing: 10px;
+}

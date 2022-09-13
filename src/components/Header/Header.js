@@ -1,5 +1,5 @@
 import React from "react";
-import { ManageAccount } from "../ManageAccount";
+import { ManageAccount } from "../ManageAccount/ManageAccount";
 import { useGlobal } from "../Contexts/GlobalProvider";
 
 export default function Header() {
@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div className="Header">
       <h1 className="Header__title"> VIMEO SEARCHER</h1>
-      <ManageAccount loggedUser={currentUser} setLoggedUser={setCurrentUser} />
+      {/* <ManageAccount loggedUser={currentUser} setLoggedUser={setCurrentUser} /> */}
     </div>
   );
 }

@@ -25,11 +25,13 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       );
     }
   }
+
   function logOut(e) {
     e.preventDefault();
     localStorage.removeItem("logged");
     setLoggedUser(undefined);
   }
+
   function onDelAccSubmit(e) {
     e.preventDefault();
     let users = JSON.parse(localStorage.getItem("users"));
@@ -44,6 +46,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
     setIsDelAccForm(false);
     setFormError("");
   }
+
   function onEditAccSubmit(e) {
     e.preventDefault(e);
     if (loggedUser) {
@@ -92,10 +95,11 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       setIsMakeAccForm(false);
     }
   }
+
   function displayMakeAccForm() {
     return (
       <div>
-        <div>Make a new account.</div>
+        <div className="MakeAccount">Make a new account.</div>
         <form onSubmit={(e) => onMakeAccSubmit(e)}>
           <input
             value={username}
@@ -123,6 +127,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       </div>
     );
   }
+
   function displayLoginForm() {
     return (
       <div>
@@ -165,6 +170,7 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       </div>
     );
   }
+
   function displayEditAccForm() {
     return (
       <div>
@@ -200,6 +206,8 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       </div>
     );
   }
+
+
   function displayDelAccForm() {
     return (
       <form onSubmit={(e) => onDelAccSubmit(e)}>
@@ -218,6 +226,8 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       </form>
     );
   }
+
+
   function displayUnlogged() {
     return (
       <>
@@ -233,6 +243,8 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
       </>
     );
   }
+
+  
   function displayLogged() {
     return (
       <div>
@@ -255,6 +267,8 @@ export const ManageAccount = ({ loggedUser, setLoggedUser }) => {
     if (loggedUser && isEditAccForm) {
       return displayEditAccForm();
     }
+
+
     if (!loggedUser && !isIsMakeAccForm && !isIsLoginForm) {
       return displayUnlogged();
     }
