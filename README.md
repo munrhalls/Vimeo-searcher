@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# Vimeo API videos search app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website link: (https://vimeo-searcher.netlify.app).
+
+This app enables user to search and display Vimeo videos via search input.
+
+Looks similar to google, except for any search result, you get a list of Vimeo videos.
+
+App features full mobile responsiveness,
+a multidimensionally-animated, multi-layered loader (created by app's author),
+smooth, grey-white design (also by author).
+
+Videos are downloaded & decoded dynamically, using Vimeo API.
+
+Videos are directly playable on the website.
+
+Requests to server are minimized via Local Storage usage, repeated terms are drawn from queries saved locally, rather than triggering duplicate query to Vimeo API.
 
 ## Available Scripts
 

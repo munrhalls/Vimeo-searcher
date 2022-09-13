@@ -17,7 +17,7 @@ export const Video = ({ video }) => {
             src={getVidSrc()}
             controls
             preload="metadata"
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
             height="100%"
