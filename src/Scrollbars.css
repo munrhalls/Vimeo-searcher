@@ -1,11 +1,10 @@
 
     /* Foreground, Background */
-
 ::-webkit-scrollbar {
     scrollbar-color: #aaa #333;
     width: 10px; /* Mostly for vertical scrollbars */
     height: 10px; /* Mostly for horizontal scrollbars */
-    border-radius: 50%;
+    border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb { /* Foreground */
     background: #aaa;

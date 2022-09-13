@@ -7,23 +7,42 @@
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(77,77,77,1) 42%, rgba(117,117,117,1) 100%);
     color: #fff;
     height: 3rem;
+    padding: 0 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: safe center;
+}
+.Footer__authorAttrib {
+    font-size: .75rem;
+    letter-spacing: 1px;
+    height: 2.5rem;
+    font-family:   'Neuropol X Rg',  'Beware',  'Good Times Rg', 'Libre Baskerville', 'Libre Baskerville', 'Cilica';
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: safe center;
+    align-items: safe center;
+
+}
+.Footer__authorAttrib__metaTitle {
+    font-size: .5rem;
+}
+.Footer__authorAttrib__title {
+    margin-top: .75rem;
+    margin-top: .5rem;
+    font-weight: bold;
+}
+
+.Footer__attribs {
+    margin: 0 1.5rem;
+    max-width: 45%;
 
     display: flex;
     justify-content: safe center;
     align-items: safe center;
-}
-    
-.Footer__attribs {
-    margin-left: auto;
-    margin-right: 1.5rem;
-    display: flex;
-    margin-left: auto;
-    max-width: 45%;
-    display: flex;
-    justify-content: safe center;
-    align-items: safe center;
     height: 2.5rem;
-    
 }
 
 .Footer__attribs__metaTitle {
