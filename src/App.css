@@ -5,11 +5,11 @@
 @import './Fonts/Fonts.css';
 
 input, button {
-    font-family: 'Beware';
+    font-family: 'BlackChancery', 'Neuropol X Rg',  'Beware',  'Good Times Rg', 'Libre Baskerville', 'Libre Baskerville', 'Cilica';
 }
 
 .App {
-    font-family:  'Libre Baskerville' ,'Good Times Rg','Cilica','Beware','BlackChancery','Libre Baskerville','Neuropol X Rg';
+    font-family:  'BlackChancery', 'Neuropol X Rg',  'Beware',  'Good Times Rg', 'Libre Baskerville', 'Libre Baskerville', 'Cilica';
     min-height: 100vh;
     display: flex;
     flex-direction: column;
