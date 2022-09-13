@@ -23,6 +23,10 @@ export function Loader({ children, active }) {
                 ></div>
               );
             })}
+
+          <h1 className="Loader__text">
+            <span className="Loader__text__span">LOADING...</span>
+          </h1>
         </div>
       ) : (
         children
