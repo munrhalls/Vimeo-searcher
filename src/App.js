@@ -26,12 +26,17 @@ function App() {
     );
     setIsLoading(false);
   }
-  function getVidsFromAPI(result) {
-    console.log("API CALL");
-    setSearchVideos(() => result);
-    let localStorageKey = "LOCAL_STORAGE_" + search;
-    localStorage.setItem(localStorageKey, JSON.stringify(result));
-  }
+
+  useEffect(() => {
+    if (!search) return;
+    if (!localStorage.getItem("LOCAL_STORAGE_" + search)) {
+      handleSubmit();
+    }
+    if (localStorage.getItem("LOCAL_STORAGE_" + search)) {
+      getVidsFromLS();
+    }
+  }, [search]);
+
   async function handleSubmit() {
     try {
       const res = await getVidsFromVIMEO(search);
@@ -43,15 +48,6 @@ function App() {
       console.error(e);
     }
   }
-  useEffect(() => {
-    if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      handleSubmit();
-    }
-
-    if (search && localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      getVidsFromLS();
-    }
-  }, [search]);
 
   return (
     <div

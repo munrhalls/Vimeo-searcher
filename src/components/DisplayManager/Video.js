@@ -1,7 +1,7 @@
 import React from "react";
 import { VideoMenu } from "./VideoMenu";
 
-export const Video = ({ video, playlists, setPlaylists }) => {
+export const Video = ({ video }) => {
   function getVidSrc() {
     const videoArr = video.split('"');
     const src = videoArr[1];
@@ -23,13 +23,6 @@ export const Video = ({ video, playlists, setPlaylists }) => {
             height="100%"
             width="100%"
           ></iframe>
-
-          <button>Add to playlist</button>
-          <VideoMenu
-            video={video}
-            playlists={playlists}
-            setPlaylists={setPlaylists}
-          />
         </>
       ) : (
         ""
