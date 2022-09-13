@@ -11,7 +11,7 @@ export function useGlobal() {
 export function GlobalProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const value = { ...UsersAPI() };
+  const value = { isLoading, setIsLoading, ...UsersAPI() };
   return (
     <GlobalContext.Provider value={value}>
       <Loader active={isLoading}>{children}</Loader>

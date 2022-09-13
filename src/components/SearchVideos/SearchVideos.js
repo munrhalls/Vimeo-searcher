@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import { Loader } from "../Loader/Loader";
+import { useGlobal } from "../Contexts/GlobalProvider";
 
 export const SearchVideos = ({
   searchInput: searchInput,
   setSearchInput: setSearchInput,
-  searchVideos: searchVideos,
-  setSearchVideos: setSearchVideos,
-  search: search,
   setSearch: setSearch,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const { setIsLoading } = useGlobal();
 
   return (
     <div className="SearchVideos">
@@ -24,11 +21,7 @@ export const SearchVideos = ({
       />
       <button
         className="SearchVideos__btn"
-        onClick={() =>
-          setSearch(() => {
-            return searchInput;
-          })
-        }
+        onClick={() => setSearch(() => searchInput)}
       >
         Search videos
       </button>

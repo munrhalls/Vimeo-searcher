@@ -19,7 +19,7 @@ function App() {
   const [playlists, setPlaylists] = useState([]);
   const [loggedUser, setLoggedUser] = useState(false);
 
-  const { determineLoggedStatus } = useGlobal();
+  const { determineLoggedStatus, setIsLoading } = useGlobal();
   if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify([]));
   }
@@ -41,9 +41,6 @@ function App() {
   let searchProps = {
     searchInput: searchInput,
     setSearchInput: setSearchInput,
-    searchVideos: searchVideos,
-    setSearchVideos: setSearchVideos,
-    search: search,
     setSearch: setSearch,
   };
 
@@ -59,10 +56,12 @@ function App() {
   };
 
   function getVidsFromLS() {
+    setIsLoading(true);
     setIsLoaded(true);
     setSearchVideos(
       JSON.parse(localStorage.getItem("LOCAL_STORAGE_" + search))
     );
+    setIsLoading(false);
   }
   function getVidsFromAPI(result) {
     console.log("API CALL");
@@ -79,6 +78,8 @@ function App() {
 
   useEffect(() => {
     if (search && !localStorage.getItem("LOCAL_STORAGE_" + search)) {
+      setIsLoading(true);
+
       fetch(
         "https://api.vimeo.com/videos?&width=480&height=360&query=" + search,
         {
@@ -91,8 +92,10 @@ function App() {
         .then(
           (result) => {
             getVidsFromAPI(result);
+            setIsLoading(false);
           },
           (error) => {
+            setIsLoading(false);
             setIsLoaded(true);
             setError(error);
           }

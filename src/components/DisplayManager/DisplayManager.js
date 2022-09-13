@@ -12,50 +12,36 @@ export const DisplayManager = ({
   search: search,
   error: error,
 }) => {
-  function displaySearchVideos() {
-    let videos = [];
-    for (const [key, value] of Object.entries(searchVideos.data)) {
-      videos.push(value.embed.html);
-    }
-    return (
-      <Videos
-        setPlaylists={(playlists) => setPlaylists(playlists)}
-        playlists={playlists}
-        videos={videos}
-      />
-    );
-  }
-  function displayPlaylistVideos() {
-    let videos = [];
-    for (const [key, value] of Object.entries(activePlaylist.items)) {
-      videos.push(value);
-    }
-
-    return (
-      <div>
-        <Videos
-          setPlaylists={(playlists) => setPlaylists(playlists)}
-          playlists={playlists}
-          videos={activePlaylist.items}
-        />
-        <button onClick={() => exitPlaylist()}>Exit playlist</button>
-      </div>
-    );
-  }
-  function whatToDisplayLogic() {
-    if (!isLoaded && !search) {
-      return <b>Hello-page</b>;
-    }
-    if (isLoaded && error) {
-      return <Loader />;
-    }
-    if (isLoaded && !error && !activePlaylist) {
-      return displaySearchVideos();
-    }
-    if (isLoaded && !error && activePlaylist) {
-      return displayPlaylistVideos();
+  let videos = [];
+  if (searchVideos?.length) {
+    for (const [key, value] of Object.entries(searchVideos?.data)) {
+      videos?.push(value?.embed?.html);
     }
   }
 
-  return <div> {whatToDisplayLogic()}</div>;
+  // function displayPlaylistVideos() {
+  //   let videos = [];
+  //   for (const [key, value] of Object.entries(activePlaylist.items)) {
+  //     videos.push(value);
+  //   }
+
+  //   return (
+  //     <div>
+  //       <Videos
+  //         setPlaylists={(playlists) => setPlaylists(playlists)}
+  //         playlists={playlists}
+  //         videos={activePlaylist.items}
+  //       />
+  //       <button onClick={() => exitPlaylist()}>Exit playlist</button>
+  //     </div>
+  //   );
+  // }
+
+  return (
+    <Videos
+      setPlaylists={(playlists) => setPlaylists(playlists)}
+      playlists={playlists}
+      videos={videos}
+    />
+  );
 };
