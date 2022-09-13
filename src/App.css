@@ -1,5 +1,6 @@
 /* globals */
 @import './Fonts/Fonts.css';
+@import './Main.css';
 /* from comps */
 @import './components/Header/Header.css';
 @import './components/SearchVideos/SearchVideos.css';

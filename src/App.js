@@ -72,9 +72,11 @@ function App() {
       }}
     >
       <Header />
-      <SearchVideos {...searchProps} />
+      <main className="Main">
+        <SearchVideos {...searchProps} />
+        <DisplayManager searchVideos={searchVideos} search={search} />
+      </main>
 
-      <DisplayManager searchVideos={searchVideos} search={search} />
       <Footer />
     </div>
   );
