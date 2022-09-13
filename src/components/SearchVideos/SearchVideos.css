@@ -9,11 +9,46 @@
 }
 
 .SearchVideos__title {
+    margin-top: .5rem;
     font-size: 1.75rem;
     text-align: center;
+    color: #aaa;
 }
 
 .SearchVideos__input {
+    margin-top: .5rem;
     padding: 1rem;
-    width: 5rem;
+    width: 70%;
+    max-width: 80%;
+
+    background: none;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    color: #aaa;
+    outline: none;
+}
+
+.SearchVideos__btn {
+    cursor: pointer;
+    margin:  1rem 0;
+    padding: 1rem;
+
+    width: 40%;
+    max-width: 40%;
+    background: none;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    color: #aaa;
+}
+
+.SearchVideos__input:hover  {
+    background: rgb(128,128,128);
+    background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
+    color: #fff;
+}
+
+.SearchVideos__btn:hover {
+    background: rgb(128,128,128);
+    background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
+    color: #fff;
 }

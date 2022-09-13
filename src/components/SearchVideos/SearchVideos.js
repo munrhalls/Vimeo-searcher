@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Loader } from "../Loader/Loader";
 
 export const SearchVideos = ({
   searchInput: searchInput,
@@ -8,6 +9,8 @@ export const SearchVideos = ({
   search: search,
   setSearch: setSearch,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <div className="SearchVideos">
       <div className="SearchVideos__title">SEARCH VIDEOS</div>

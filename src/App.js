@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 // import Videos from "./components/Videos";
 import { PlaylistBtn } from "./components/PlaylistBtn.js";
-import { Loader } from "./components/Loader";
+import { Loader } from "./components/Loader/Loader";
 // import { Error } from "./components/Error";
 import { DisplayManager } from "./components/DisplayManager/DisplayManager";
 import { SearchVideos } from "./components/SearchVideos/SearchVideos";

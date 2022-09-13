@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import UsersAPI from "./UsersAPI";
+import { Loader } from "../Loader/Loader";
 
 const GlobalContext = React.createContext();
 
@@ -8,8 +9,12 @@ export function useGlobal() {
 }
 
 export function GlobalProvider({ children }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const value = { ...UsersAPI() };
   return (
-    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>
+      <Loader active={isLoading}>{children}</Loader>
+    </GlobalContext.Provider>
   );
 }
