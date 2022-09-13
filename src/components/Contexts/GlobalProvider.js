@@ -10,7 +10,7 @@ export function useGlobal() {
 }
 
 export function GlobalProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const value = { isLoading, setIsLoading, ...UsersAPI(), ...VimeoAPI() };
   return (

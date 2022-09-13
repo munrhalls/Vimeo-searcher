@@ -1,5 +1,5 @@
 import React from "react";
-// Loader by Munrhalls (me)
+import { v4 as uuid } from "uuid"; // Loader by Munrhalls (me)
 
 export function Loader({ children, active }) {
   const decrement = [70, 60, 50, 40, 30, 20, 10];
@@ -13,6 +13,7 @@ export function Loader({ children, active }) {
             .map((el, index) => {
               return (
                 <div
+                  key={uuid()}
                   style={{
                     height: `${decrement[index]}%`,
                     width: `${decrement[index]}%`,

@@ -9,7 +9,14 @@
     /* scroll */
     max-height: 100%;
     overflow-y: auto;
+    
 }
 
 
-
+.Videos__emptyMsg {
+    color: #fff;
+    font-size: 3rem;
+    padding: 2rem;
+    margin: auto;
+    text-align: center;
+}
