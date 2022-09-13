@@ -2,6 +2,7 @@
 @import './Reset.css';
 @import './Scrollbars.css';
 @import './Main.css';
+@import './components/Loader/Loader.css';
 @import './Fonts/Fonts.css';
 /* from comps */
 @import './components/Header/Header.css';
@@ -13,6 +14,7 @@
 
 html, body {
     background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
+    min-height: 100vh;
 }
 
 input, button {

@@ -38,14 +38,16 @@ function App() {
   }, [search]);
 
   async function handleSubmit() {
+    setIsLoading(true);
     try {
       const res = await getVidsFromVIMEO(search);
       const videos = await res.json();
-
       setSearchVideos(() => videos);
       localStorage.setItem("LOCAL_STORAGE_" + search, JSON.stringify(videos));
+      setIsLoading(false);
     } catch (e) {
       console.error(e);
+      setIsLoading(false);
     }
   }
 
@@ -63,7 +65,6 @@ function App() {
         <SearchVideos {...searchProps} />
         <DisplayManager searchVideos={searchVideos} search={search} />
       </main>
-
       <Footer />
     </div>
   );
