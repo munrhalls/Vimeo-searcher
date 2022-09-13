@@ -10,7 +10,7 @@ function Videos({ videos }) {
         })
       ) : (
         <li className="Videos__emptyMsg">
-          This playlist or collection of search results is currently empty.
+          Cannot display results for this search query.
         </li>
       )}
     </ul>

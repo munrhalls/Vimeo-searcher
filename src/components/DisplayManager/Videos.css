@@ -17,6 +17,7 @@
     color: #fff;
     font-size: 3rem;
     padding: 2rem;
+    max-width: 70%;
     margin: auto;
     text-align: center;
 }
