@@ -11,8 +11,9 @@ export const Video = ({ video, playlists, setPlaylists }) => {
   return (
     <div className="Video">
       {video ? (
-        <div>
+        <>
           <iframe
+            className="Video__iFrame"
             src={getVidSrc()}
             controls
             preload="metadata"
@@ -29,7 +30,7 @@ export const Video = ({ video, playlists, setPlaylists }) => {
             playlists={playlists}
             setPlaylists={setPlaylists}
           />
-        </div>
+        </>
       ) : (
         ""
       )}
