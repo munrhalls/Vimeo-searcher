@@ -56,7 +56,7 @@ function App() {
       getVidsFromLS();
     }
   }, [search]);
-
+  
   return (
     <div
       className="App"
