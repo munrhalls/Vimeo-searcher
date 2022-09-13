@@ -1,21 +1,47 @@
+@import './MobileFooter.css';
+
+
 .Footer {
     margin-top: auto;
     background: rgb(72, 72, 72);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(77,77,77,1) 42%, rgba(117,117,117,1) 100%);
+    color: #fff;
     height: 3rem;
 
     display: flex;
     justify-content: safe center;
     align-items: safe center;
 }
-
+    
 .Footer__attribs {
     margin-left: auto;
     margin-right: 1.5rem;
+    display: flex;
+    margin-left: auto;
+    max-width: 45%;
+    display: flex;
+    justify-content: safe center;
+    align-items: safe center;
+    height: 2.5rem;
+    
 }
 
-.Footer__attribs__link {
+.Footer__attribs__metaTitle {
+    font-size: .75rem;
+    margin-right: 1.5rem;
+    white-space: nowrap;
+}
+
+.Footer__attribs__container {
+    /* scroll */
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.Footer__attribs__container__link {
     font-size: .75rem;
     outline: none;
     color: #fff;
+    white-space: nowrap;
 }

@@ -1,5 +1,6 @@
 /* globals */
 @import './Reset.css';
+@import './Scrollbars.css';
 @import './Main.css';
 @import './Fonts/Fonts.css';
 /* from comps */
@@ -8,6 +9,11 @@
 @import './components/DisplayManager/DisplayManager.css';
 @import './components/ManageAccount/ManageAccount.css';
 @import './components/Footer/Footer.css';
+
+
+html, body {
+    background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(214,214,214,1) 42%, rgba(232,232,232,1) 100%);
+}
 
 input, button {
     font-family: 'BlackChancery', 'Neuropol X Rg',  'Beware',  'Good Times Rg', 'Libre Baskerville', 'Libre Baskerville', 'Cilica';
@@ -23,4 +29,10 @@ input, button {
     display: flex;
     flex-direction: column;   
     width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    html, body {
+        font-size: 8px;
+    }
 }
