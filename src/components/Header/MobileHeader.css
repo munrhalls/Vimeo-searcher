@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px) {
+    .Header {
+
+    }
+
+    .Header__title {
+        letter-spacing: 4px;
+    }
+
+    .Header__icon {
+
+    }
+}

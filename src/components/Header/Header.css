@@ -1,3 +1,4 @@
+/* mobile import after */
 .Header {
     height: 3rem;
     background-color: #fff;
@@ -24,3 +25,4 @@
     height: 2rem;
     width: 2.5rem;
 }
+@import './MobileHeader.css';

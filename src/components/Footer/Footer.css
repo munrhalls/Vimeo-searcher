@@ -1,6 +1,4 @@
-@import './MobileFooter.css';
-
-
+/* mobile import after */
 .Footer {
     margin-top: auto;
     background: rgb(72, 72, 72);
@@ -23,7 +21,7 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: safe center;
-    align-items: safe center;
+    align-items: flex-start;
 
 }
 .Footer__authorAttrib__metaTitle {
@@ -64,3 +62,4 @@
     color: #fff;
     white-space: nowrap;
 }
+@import './MobileFooter.css';
