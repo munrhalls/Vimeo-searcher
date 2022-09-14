@@ -1,4 +1,5 @@
 .Video {
+    cursor: pointer;
     /* box */
     border-radius: 3px;
     border: 12px solid #aaa;
