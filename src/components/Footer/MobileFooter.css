@@ -1,4 +1,7 @@
 @media screen and (max-width: 600px) {
+    .Footer {
+        height: 5rem;
+    }
     .Footer__attribs__metaTitle {
         font-size: 1.25rem;
     }
