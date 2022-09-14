@@ -8,8 +8,6 @@ import { useGlobal } from "./components/Contexts/GlobalProvider";
 import useWindowHeight from "./components/Hooks/useWindowHeight";
 import { Loader } from "./components/Loader/Loader";
 
-// import { resJson } from "./mockObj";
-
 function App() {
   const [searchVideos, setSearchVideos] = useState();
   const [searchInput, setSearchInput] = useState("");
@@ -33,14 +31,8 @@ function App() {
 
   useEffect(() => {
     if (!search) return;
-    if (!localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      console.log("submit search query");
-      handleSubmit();
-    }
-    if (localStorage.getItem("LOCAL_STORAGE_" + search)) {
-      console.log("zxc?");
-      getVidsFromLS();
-    }
+    if (!localStorage.getItem("LOCAL_STORAGE_" + search)) handleSubmit();
+    if (localStorage.getItem("LOCAL_STORAGE_" + search)) getVidsFromLS();
   }, [search]);
 
   async function handleSubmit() {
@@ -52,22 +44,18 @@ function App() {
       const vidsHtmls = await vidsDataArr.map((vidData) => {
         return vidData?.embed?.html;
       });
-      console.log(vidsHtmls);
       setIsLoading(false);
+
       setSearchVideos(() => vidsHtmls);
-      console.log(searchVideos);
       localStorage.setItem(
         "LOCAL_STORAGE_" + search,
         JSON.stringify(vidsHtmls)
       );
-      console.log(searchVideos);
     } catch (e) {
       setIsLoading(false);
       console.error(e);
     }
   }
-
-  console.log("search videos in app", searchVideos);
 
   return (
     <div
