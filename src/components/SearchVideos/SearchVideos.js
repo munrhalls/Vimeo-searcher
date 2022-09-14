@@ -23,7 +23,7 @@ export const SearchVideos = ({
         placeholder="Type here..."
         type="text"
         value={searchInput}
-        onChange={(e) => setSearchInput(e?.target?.value)}
+        onChange={(e) => setSearchInput(() => e?.target?.value)}
       />
       <button
         className="SearchVideos__btn"

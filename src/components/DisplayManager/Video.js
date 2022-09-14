@@ -2,6 +2,7 @@ import React from "react";
 import { VideoMenu } from "./VideoMenu";
 
 export const Video = ({ video }) => {
+  
   function getVidSrc() {
     const videoArr = video.split('"');
     const src = videoArr[1];

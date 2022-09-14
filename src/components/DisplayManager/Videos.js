@@ -1,6 +1,8 @@
 import { Video } from "./Video";
 
 function Videos({ videos }) {
+  console.log("videos in viideos ", videos);
+
   return (
     <ul className="Videos">
       {videos?.length ? (

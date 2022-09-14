@@ -6,12 +6,16 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { useGlobal } from "./components/Contexts/GlobalProvider";
 import useWindowHeight from "./components/Hooks/useWindowHeight";
+import { Loader } from "./components/Loader/Loader";
+
+// import { resJson } from "./mockObj";
 
 function App() {
-  const [searchVideos, setSearchVideos] = useState([]);
+  const [searchVideos, setSearchVideos] = useState();
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
-  const { setIsLoading, getVidsFromVIMEO } = useGlobal();
+
+  const { isLoading, setIsLoading, getVidsFromVIMEO } = useGlobal();
 
   let searchProps = {
     searchInput: searchInput,
@@ -30,9 +34,11 @@ function App() {
   useEffect(() => {
     if (!search) return;
     if (!localStorage.getItem("LOCAL_STORAGE_" + search)) {
+      console.log("submit search query");
       handleSubmit();
     }
     if (localStorage.getItem("LOCAL_STORAGE_" + search)) {
+      console.log("zxc?");
       getVidsFromLS();
     }
   }, [search]);
@@ -41,15 +47,27 @@ function App() {
     setIsLoading(true);
     try {
       const res = await getVidsFromVIMEO(search);
-      const videos = await res.json();
-      setSearchVideos(() => videos);
-      localStorage.setItem("LOCAL_STORAGE_" + search, JSON.stringify(videos));
+      const resJson = await res.json();
+      const vidsDataArr = await resJson?.data;
+      const vidsHtmls = await vidsDataArr.map((vidData) => {
+        return vidData?.embed?.html;
+      });
+      console.log(vidsHtmls);
       setIsLoading(false);
+      setSearchVideos(() => vidsHtmls);
+      console.log(searchVideos);
+      localStorage.setItem(
+        "LOCAL_STORAGE_" + search,
+        JSON.stringify(vidsHtmls)
+      );
+      console.log(searchVideos);
     } catch (e) {
-      console.error(e);
       setIsLoading(false);
+      console.error(e);
     }
   }
+
+  console.log("search videos in app", searchVideos);
 
   return (
     <div
@@ -60,12 +78,14 @@ function App() {
         maxHeight: `${useWindowHeight()}px`,
       }}
     >
-      <Header />
-      <main className="Main">
-        <SearchVideos {...searchProps} />
-        <DisplayManager searchVideos={searchVideos} search={search} />
-      </main>
-      <Footer />
+      <Loader active={isLoading}>
+        <Header />
+        <main className="Main">
+          <SearchVideos {...searchProps} />
+          <DisplayManager searchVideos={searchVideos} search={search} />
+        </main>
+        <Footer />
+      </Loader>
     </div>
   );
 }

@@ -1,4 +1,6 @@
-import React from "react";
+// api docs
+// https://developer.vimeo.com/api/common-formats#json-filter
+// https://developer.vimeo.com/api/reference/videos#search_videos !!!
 
 export default function VimeoAPI() {
   const getVidsFromVIMEO = async (searchTerm) => {
