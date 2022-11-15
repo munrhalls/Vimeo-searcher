@@ -4,6 +4,8 @@ Website link: (https://vimeo-searcher.netlify.app).
 
 The point of this project was learning React, and using API with React.
 
+Code has a lot of suboptimal solutions I need to not repeat in future projects. My scope for this project was to learn using React with external API.
+
 ## Available Scripts
 
 In the project directory, you can run:
